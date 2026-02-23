@@ -1,8 +1,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
+    import { lang } from "$lib/stores/lang";
+    import { content } from "$lib/content";
 
     let visible = false;
     let barsAnimated = false;
+    $: t = content[$lang].skills;
 
     onMount(() => {
         const observer = new IntersectionObserver(
@@ -19,15 +22,15 @@
         return () => observer.disconnect();
     });
 
-    // Sorted descending by pct
+    // Sorted descending by pct — bar color matches icon brand color
     const hardSkills = [
-        { name: "HTML & CSS", pct: 100, icon: "vscode-icons:file-type-html" },
-        { name: "Git", pct: 100, icon: "logos:git-icon" },
-        { name: "Svelte", pct: 85, icon: "vscode-icons:file-type-svelte" },
-        { name: "Laravel", pct: 80, icon: "logos:laravel" },
-        { name: "Flutter", pct: 80, icon: "logos:flutter" },
-        { name: "Tailwind CSS", pct: 75, icon: "logos:tailwindcss-icon" },
-        { name: "JavaScript", pct: 70, icon: "logos:javascript" },
+        { name: "HTML & CSS", pct: 100, icon: "vscode-icons:file-type-html", color: "#e34f26" },
+        { name: "Git", pct: 100, icon: "logos:git-icon", color: "#f05032" },
+        { name: "Svelte", pct: 85, icon: "vscode-icons:file-type-svelte", color: "#ff3e00" },
+        { name: "Laravel", pct: 80, icon: "logos:laravel", color: "#ff2d20" },
+        { name: "Flutter", pct: 80, icon: "logos:flutter", color: "#02569b" },
+        { name: "Tailwind CSS", pct: 75, icon: "logos:tailwindcss-icon", color: "#06b6d4" },
+        { name: "JavaScript", pct: 70, icon: "logos:javascript", color: "#f7df1e" },
     ];
 
     const tools = [
@@ -99,12 +102,11 @@
         <div class="section-header anim d1">
             <span class="section-tag">
                 <span class="tag-dot"></span>
-                What I Can Do
+                {t.tag}
             </span>
-            <h2 class="section-title">Skills & Expertise</h2>
+            <h2 class="section-title">{t.title}</h2>
             <p class="section-subtitle">
-                A toolkit built through hands-on projects, real coursework, and
-                relentless curiosity — always growing.
+                {t.subtitle}
             </p>
         </div>
 
@@ -118,8 +120,8 @@
                     ></iconify-icon>
                 </div>
                 <div>
-                    <h3 class="block-title title-cyan">Hard Skills</h3>
-                    <p class="block-sub">Core technical proficiency</p>
+                    <h3 class="block-title title-cyan">{t.hardSkillsTitle}</h3>
+                    <p class="block-sub">{t.hardSkillsSub}</p>
                 </div>
             </div>
 
@@ -135,12 +137,15 @@
                                 ></iconify-icon>
                                 <span class="bar-name">{skill.name}</span>
                             </div>
-                            <span class="bar-pct pct-cyan">{skill.pct}%</span>
+                            <span
+                                class="bar-pct"
+                                style="color: {skill.color}"
+                            >{skill.pct}%</span>
                         </div>
                         <div class="bar-track">
                             <div
-                                class="bar-fill fill-cyan"
-                                style="width: {barsAnimated ? skill.pct : 0}%"
+                                class="bar-fill"
+                                style="width: {barsAnimated ? skill.pct : 0}%; --bar-color: {skill.color}"
                             ></div>
                         </div>
                     </div>
@@ -161,9 +166,9 @@
                 </div>
                 <div>
                     <h3 class="block-title title-purple">
-                        Tools &amp; Software
+                        {t.toolsTitle}
                     </h3>
-                    <p class="block-sub">Technologies I work with daily</p>
+                    <p class="block-sub">{t.toolsSub}</p>
                 </div>
             </div>
 
@@ -191,8 +196,8 @@
                     ></iconify-icon>
                 </div>
                 <div>
-                    <h3 class="block-title title-pink">Soft Skills</h3>
-                    <p class="block-sub">How I work and think with others</p>
+                    <h3 class="block-title title-pink">{t.softSkillsTitle}</h3>
+                    <p class="block-sub">{t.softSkillsSub}</p>
                 </div>
             </div>
 
@@ -213,29 +218,29 @@
 </section>
 
 <style>
-    /* ── Design tokens ── */
-    :root {
-        --bg: #030c1a;
-        --text: #eef4ff;
-        --muted: rgba(238, 244, 255, 0.46);
-        --glass: rgba(255, 255, 255, 0.04);
-        --border: rgba(255, 255, 255, 0.08);
+    /* ── Design tokens (light theme) ── */
+    .skills-section {
+        --bg: #f8fafc;
+        --text: #0f172a;
+        --muted: rgba(15, 23, 42, 0.6);
+        --glass: rgba(255, 255, 255, 0.7);
+        --border: rgba(15, 23, 42, 0.1);
 
         /* Cyan — Hard Skills */
-        --cyan: #22d3ee;
-        --cyan-soft: rgba(34, 211, 238, 0.1);
-        --cyan-border: rgba(34, 211, 238, 0.25);
-        --cyan-bar: linear-gradient(90deg, #22d3ee 0%, #67e8f9 100%);
+        --cyan: #0891b2;
+        --cyan-soft: rgba(8, 145, 178, 0.12);
+        --cyan-border: rgba(8, 145, 178, 0.35);
+        --cyan-bar: linear-gradient(90deg, #0891b2 0%, #22d3ee 100%);
 
         /* Purple — Tools */
-        --purple: #a78bfa;
-        --purple-soft: rgba(167, 139, 250, 0.1);
-        --purple-border: rgba(167, 139, 250, 0.25);
+        --purple: #7c3aed;
+        --purple-soft: rgba(124, 58, 237, 0.12);
+        --purple-border: rgba(124, 58, 237, 0.35);
 
         /* Pink — Soft Skills */
-        --pink: #f472b6;
-        --pink-soft: rgba(244, 114, 182, 0.1);
-        --pink-border: rgba(244, 114, 182, 0.25);
+        --pink: #db2777;
+        --pink-soft: rgba(219, 39, 119, 0.12);
+        --pink-border: rgba(219, 39, 119, 0.35);
     }
 
     /* ── Section shell ── */
@@ -265,7 +270,7 @@
         left: -4%;
         background: radial-gradient(
             circle,
-            rgba(34, 211, 238, 0.11) 0%,
+            rgba(8, 145, 178, 0.15) 0%,
             transparent 70%
         );
     }
@@ -276,7 +281,7 @@
         right: -5%;
         background: radial-gradient(
             circle,
-            rgba(167, 139, 250, 0.11) 0%,
+            rgba(124, 58, 237, 0.12) 0%,
             transparent 70%
         );
     }
@@ -287,7 +292,7 @@
         left: 20%;
         background: radial-gradient(
             circle,
-            rgba(244, 114, 182, 0.09) 0%,
+            rgba(219, 39, 119, 0.12) 0%,
             transparent 70%
         );
     }
@@ -296,12 +301,12 @@
         position: absolute;
         inset: 0;
         background-image: linear-gradient(
-                rgba(255, 255, 255, 0.022) 1px,
+                rgba(15, 23, 42, 0.04) 1px,
                 transparent 1px
             ),
             linear-gradient(
                 90deg,
-                rgba(255, 255, 255, 0.022) 1px,
+                rgba(15, 23, 42, 0.04) 1px,
                 transparent 1px
             );
         background-size: 56px 56px;
@@ -411,13 +416,6 @@
         color: var(--text);
         margin: 0;
     }
-    .title-accent {
-        background: linear-gradient(135deg, var(--cyan) 0%, #67e8f9 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-weight: 800;
-    }
     .section-subtitle {
         font-size: 1.08rem;
         font-weight: 300;
@@ -447,7 +445,7 @@
     }
     .block:hover {
         transform: translateY(-3px);
-        box-shadow: 0 20px 56px rgba(0, 0, 0, 0.38);
+        box-shadow: 0 20px 56px rgba(15, 23, 42, 0.12);
     }
 
     /* top accent line — hidden until hover */
@@ -587,27 +585,26 @@
         font-weight: 700;
         letter-spacing: 0.02em;
     }
-    .pct-cyan {
-        color: var(--cyan);
-    }
 
     /* Track */
     .bar-track {
         height: 8px;
         border-radius: 100px;
-        background: rgba(255, 255, 255, 0.07);
+        background: rgba(15, 23, 42, 0.08);
         overflow: hidden;
     }
 
-    /* Fill — animated width */
+    /* Per-skill bar color via --bar-color (set inline from icon color) */
     .bar-fill {
         height: 100%;
         border-radius: 100px;
         transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .fill-cyan {
-        background: var(--cyan-bar);
-        box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+        background: linear-gradient(
+            90deg,
+            var(--bar-color, var(--cyan)) 0%,
+            color-mix(in srgb, var(--bar-color, var(--cyan)) 80%, white) 100%
+        );
+        box-shadow: 0 0 10px color-mix(in srgb, var(--bar-color, var(--cyan)) 40%, transparent);
     }
 
     /* ══════════════════════════
@@ -625,8 +622,8 @@
         gap: 10px;
         padding: 20px 12px;
         border-radius: 14px;
-        background: rgba(167, 139, 250, 0.06);
-        border: 1px solid rgba(167, 139, 250, 0.14);
+        background: rgba(124, 58, 237, 0.06);
+        border: 1px solid rgba(124, 58, 237, 0.2);
         transition:
             background 0.2s ease,
             border-color 0.2s ease,
@@ -634,7 +631,7 @@
         cursor: default;
     }
     .tool-card:hover {
-        background: rgba(167, 139, 250, 0.13);
+        background: rgba(124, 58, 237, 0.12);
         border-color: var(--purple-border);
         transform: translateY(-3px);
     }
@@ -664,15 +661,15 @@
         gap: 10px;
         padding: 24px 22px;
         border-radius: 16px;
-        background: rgba(244, 114, 182, 0.05);
-        border: 1px solid rgba(244, 114, 182, 0.14);
+        background: rgba(219, 39, 119, 0.05);
+        border: 1px solid rgba(219, 39, 119, 0.2);
         transition:
             background 0.2s ease,
             border-color 0.2s ease,
             transform 0.2s ease;
     }
     .soft-card:hover {
-        background: rgba(244, 114, 182, 0.11);
+        background: rgba(219, 39, 119, 0.1);
         border-color: var(--pink-border);
         transform: translateY(-3px);
     }

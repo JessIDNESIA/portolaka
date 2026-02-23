@@ -2,6 +2,7 @@
     import Opening from "$lib/components/Opening.svelte";
     import AboutMe from "$lib/components/AboutMe.svelte";
     import Education from "$lib/components/Education.svelte";
+    import ThemeTransition from "$lib/components/ThemeTransition.svelte";
     import Skills from "$lib/components/Skills.svelte";
     import Project1 from "$lib/components/Project1.svelte";
     import Project2 from "$lib/components/Project2.svelte";
@@ -17,15 +18,38 @@
 </svelte:head>
 
 <main class="min-h-screen">
-    <Opening />
-    <AboutMe />
-    <Education />
-    <Skills />
-    <Project1 />
-    <Project2 />
-    <Project3 />
-    <Achievements />
-    <Challenges />
-    <CareerGoal />
-    <Closing />
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Opening />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <AboutMe />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Education />
+    </section>
+    <ThemeTransition />
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Skills />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Project1 />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Project2 />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Project3 />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Achievements />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Challenges />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <CareerGoal />
+    </section>
+    <section data-aos="fade-up" data-aos-duration="600">
+        <Closing />
+    </section>
 </main>

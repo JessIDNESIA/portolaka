@@ -1,6 +1,10 @@
 <script>
     import { onMount } from "svelte";
+    import { lang } from "$lib/stores/lang";
+    import { content } from "$lib/content";
+
     let visible = false;
+    $: t = content[$lang].about;
 
     onMount(() => {
         const observer = new IntersectionObserver(
@@ -26,12 +30,11 @@
         <div class="section-header anim d1">
             <span class="section-tag">
                 <span class="tag-dot"></span>
-                Get to know me
+                {t.tag}
             </span>
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title">{t.title}</h2>
             <p class="section-subtitle">
-                A passionate developer who believes in building meaningful
-                things through clean code and creative thinking.
+                {t.subtitle}
             </p>
         </div>
 
@@ -55,15 +58,9 @@
                         />
                     </svg>
                 </div>
-                <h3 class="card-title">Background</h3>
+                <h3 class="card-title">{t.backgroundTitle}</h3>
                 <p class="card-body">
-                    I'm <strong>Jose Shabra Shatilla Rajjawani</strong>, a
-                    student at
-                    <strong>IDN Boarding School, Solo</strong>, majoring in
-                    <strong>Software Engineering (RPL)</strong>. I have a deep
-                    passion for technology and software development — constantly
-                    exploring new tools, building projects, and pushing the
-                    boundaries of what I can create.
+                    {@html t.backgroundBody.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
                 </p>
             </div>
 
@@ -85,80 +82,32 @@
                         />
                     </svg>
                 </div>
-                <h3 class="card-title">Personal Strengths</h3>
+                <h3 class="card-title">{t.strengthsTitle}</h3>
                 <ul class="strength-list">
-                    <li class="strength-item">
-                        <span class="strength-check">
-                            <svg
-                                width="12"
-                                height="12"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="3"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                        </span>
-                        <div>
-                            <span class="strength-label">Adaptability</span>
-                            <span class="strength-desc"
-                                >Thrive in fast-changing environments</span
-                            >
-                        </div>
-                    </li>
-                    <li class="strength-item">
-                        <span class="strength-check">
-                            <svg
-                                width="12"
-                                height="12"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="3"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                        </span>
-                        <div>
-                            <span class="strength-label">Time Management</span>
-                            <span class="strength-desc"
-                                >Deliver work on time, every time</span
-                            >
-                        </div>
-                    </li>
-                    <li class="strength-item">
-                        <span class="strength-check">
-                            <svg
-                                width="12"
-                                height="12"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="3"
-                                    d="M5 13l4 4L19 7"
-                                />
-                            </svg>
-                        </span>
-                        <div>
-                            <span class="strength-label">Target Oriented</span>
-                            <span class="strength-desc"
-                                >Stay focused until the goal is reached</span
-                            >
-                        </div>
-                    </li>
+                    {#each t.strengths as item}
+                        <li class="strength-item">
+                            <span class="strength-check">
+                                <svg
+                                    width="12"
+                                    height="12"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="3"
+                                        d="M5 13l4 4L19 7"
+                                    />
+                                </svg>
+                            </span>
+                            <div>
+                                <span class="strength-label">{item.label}</span>
+                                <span class="strength-desc">{item.desc}</span>
+                            </div>
+                        </li>
+                    {/each}
                 </ul>
             </div>
 
@@ -180,13 +129,11 @@
                         />
                     </svg>
                 </div>
-                <h3 class="card-title">Soft Skills</h3>
+                <h3 class="card-title">{t.softSkillsTitle}</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag tag-accent">Critical Thinking</span>
-                    <span class="skill-tag tag-accent">Teamwork</span>
-                    <span class="skill-tag tag-outline">Communication</span>
-                    <span class="skill-tag tag-accent">Problem Solving</span>
-                    <span class="skill-tag tag-outline">Social Ethics</span>
+                    {#each t.tags as tag}
+                        <span class="skill-tag tag-accent">{tag}</span>
+                    {/each}
                 </div>
             </div>
 
@@ -208,12 +155,9 @@
                         />
                     </svg>
                 </div>
-                <h3 class="card-title">Career Interest</h3>
+                <h3 class="card-title">{t.careerTitle}</h3>
                 <p class="card-body">
-                    Strongly driven to pursue a career in
-                    <strong>software engineering</strong> — building
-                    <strong>innovative digital solutions</strong> that make a real
-                    difference for people and businesses.
+                    {@html t.careerBody.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
                 </p>
 
                 <!-- Mini mission line -->
@@ -232,7 +176,7 @@
                             d="M13 10V3L4 14h7v7l9-11h-7z"
                         />
                     </svg>
-                    Empowering local businesses to grow online
+                    {t.careerCta}
                 </div>
             </div>
         </div>

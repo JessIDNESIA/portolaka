@@ -1,6 +1,10 @@
 <script>
     import { onMount } from "svelte";
+    import { lang } from "$lib/stores/lang";
+    import { content } from "$lib/content";
+
     let visible = false;
+    $: t = content[$lang].education;
 
     onMount(() => {
         const observer = new IntersectionObserver(
@@ -27,12 +31,11 @@
         <div class="section-header anim d1">
             <span class="section-tag">
                 <span class="tag-dot"></span>
-                Academic Background
+                {t.tag}
             </span>
-            <h2 class="section-title">My Education</h2>
+            <h2 class="section-title">{t.title}</h2>
             <p class="section-subtitle">
-                Formal training in software engineering — building a strong
-                foundation in modern web and mobile development technologies.
+                {t.subtitle}
             </p>
         </div>
 
@@ -68,16 +71,16 @@
                     </div>
 
                     <div class="school-meta">
-                        <span class="school-period">2024 — 2026</span>
+                        <span class="school-period">{t.period}</span>
                         <span class="school-status">
                             <span class="status-dot"></span>
-                            Active
+                            {t.active}
                         </span>
                     </div>
 
-                    <h3 class="school-name">IDN Boarding<br />School</h3>
+                    <h3 class="school-name">{@html t.schoolName.replace(/\n/g, "<br />")}</h3>
                     <p class="school-location">
-                        Solo, Central Java · Indonesia
+                        {t.location}
                     </p>
 
                     <div class="school-divider"></div>
@@ -98,10 +101,8 @@
                             />
                         </svg>
                         <div>
-                            <span class="major-label">Major</span>
-                            <span class="major-name"
-                                >Software Engineering (RPL)</span
-                            >
+                            <span class="major-label">{t.majorLabel}</span>
+                            <span class="major-name">{t.majorName}</span>
                         </div>
                     </div>
                 </div>
@@ -128,53 +129,40 @@
                                 />
                             </svg>
                         </div>
-                        <h3 class="card-title">Relevant Subjects</h3>
+                        <h3 class="card-title">{t.subjectsTitle}</h3>
                     </div>
 
                     <ul class="subject-list">
                         <li class="subject-item">
                             <span class="subject-num num-cyan">01</span>
                             <div>
-                                <span class="subject-name">Web Development</span
-                                >
+                                <span class="subject-name">{t.subject1}</span>
                                 <div class="subject-chips">
-                                    <span class="s-chip chip-cyan">HTML</span>
-                                    <span class="s-chip chip-cyan">CSS</span>
-                                    <span class="s-chip chip-cyan">PHP</span>
-                                    <span class="s-chip chip-cyan"
-                                        >JavaScript</span
-                                    >
+                                    {#each t.subject1Chips as chip}
+                                        <span class="s-chip chip-cyan">{chip}</span>
+                                    {/each}
                                 </div>
                             </div>
                         </li>
                         <li class="subject-item">
                             <span class="subject-num num-purple">02</span>
                             <div>
-                                <span class="subject-name"
-                                    >Mobile App Development</span
-                                >
+                                <span class="subject-name">{t.subject2}</span>
                                 <div class="subject-chips">
-                                    <span class="s-chip chip-purple"
-                                        >Flutter</span
-                                    >
-                                    <span class="s-chip chip-purple">Dart</span>
+                                    {#each t.subject2Chips as chip}
+                                        <span class="s-chip chip-purple">{chip}</span>
+                                    {/each}
                                 </div>
                             </div>
                         </li>
                         <li class="subject-item">
                             <span class="subject-num num-pink">03</span>
                             <div>
-                                <span class="subject-name"
-                                    >Frameworks & Tools</span
-                                >
+                                <span class="subject-name">{t.subject3}</span>
                                 <div class="subject-chips">
-                                    <span class="s-chip chip-pink"
-                                        >Tailwind CSS</span
-                                    >
-                                    <span class="s-chip chip-pink">Laravel</span
-                                    >
-                                    <span class="s-chip chip-pink">Flutter</span
-                                    >
+                                    {#each t.subject3Chips as chip}
+                                        <span class="s-chip chip-pink">{chip}</span>
+                                    {/each}
                                 </div>
                             </div>
                         </li>
@@ -200,7 +188,7 @@
                                 />
                             </svg>
                         </div>
-                        <h3 class="card-title">Academic Achievements</h3>
+                        <h3 class="card-title">{t.achievementTitle}</h3>
                     </div>
 
                     <div class="achievement-empty">
@@ -219,11 +207,9 @@
                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                             />
                         </svg>
-                        <p class="empty-title">Still in Progress</p>
+                        <p class="empty-title">{t.achievementEmpty}</p>
                         <p class="empty-desc">
-                            Currently focused on sharpening skills and
-                            completing projects.
-                            <strong>Achievements coming soon.</strong>
+                            {@html t.achievementDesc.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
                         </p>
                     </div>
                 </div>

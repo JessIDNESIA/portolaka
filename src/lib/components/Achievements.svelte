@@ -1,6 +1,11 @@
+<script lang="ts">
+    import { lang } from "$lib/stores/lang";
+    import { content } from "$lib/content";
+    $: t = content[$lang].achievements;
+</script>
 <section id="achievements" class="section-container">
     <div class="section-content">
-        <h2 class="section-title">Prestasi & Sertifikasi</h2>
+        <h2 class="section-title">{t.title}</h2>
 
         <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <!-- Competitions -->
@@ -13,14 +18,14 @@
                             <i class="fa-solid fa-trophy text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-semibold text-slate-800">
-                            Kompetisi
+                            {t.competitions}
                         </h3>
                     </div>
                     <ul class="space-y-3">
                         <li class="border-l-4 border-yellow-400 pl-4 py-2">
-                            <p class="text-slate-500 italic">Coming soon</p>
+                            <p class="text-slate-500 italic">{t.comingSoon}</p>
                             <p class="text-sm text-slate-400">
-                                Siap untuk tantangan berikutnya!
+                                {t.comingSoonDesc}
                             </p>
                         </li>
                     </ul>
@@ -35,7 +40,7 @@
                             <i class="fa-solid fa-certificate text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-semibold text-slate-800">
-                            Sertifikasi
+                            {t.certifications}
                         </h3>
                     </div>
                     <ul class="space-y-4">
@@ -95,7 +100,7 @@
                             class="absolute bottom-2 right-2 bg-white/90 text-blue-600 text-xs px-2 py-1 rounded shadow-sm hover:bg-white transition-colors"
                         >
                             <i class="fa-solid fa-up-right-from-square mr-1"
-                            ></i> Verify
+                            ></i> {t.verify}
                         </a>
                     </div>
                 </div>
@@ -109,7 +114,7 @@
                             <i class="fa-solid fa-graduation-cap text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-semibold text-slate-800">
-                            Workshop
+                            {t.workshops}
                         </h3>
                     </div>
                     <ul class="space-y-4">
@@ -132,7 +137,7 @@
                         >
                             <i class="fa-solid fa-images text-2xl"></i>
                             <span class="text-xs"
-                                >Documentation in progress</span
+                                >{t.docInProgress}</span
                             >
                         </div>
                     </div>
@@ -149,7 +154,7 @@
                             <i class="fa-solid fa-laptop-code text-3xl"></i>
                         </div>
                         <h3 class="text-2xl font-semibold text-slate-800">
-                            Course Online
+                            {t.onlineCourses}
                         </h3>
                     </div>
                     <ul class="space-y-4">
@@ -180,7 +185,7 @@
                             target="_blank"
                             class="absolute bottom-2 right-2 bg-white/90 text-purple-600 text-xs px-2 py-1 rounded shadow-sm hover:bg-white transition-colors"
                         >
-                            <i class="fa-solid fa-link mr-1"></i> Course Link
+                            <i class="fa-solid fa-link mr-1"></i> {t.courseLink}
                         </a>
                     </div>
                 </div>

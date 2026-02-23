@@ -1,7 +1,12 @@
 <script>
     import { onMount } from "svelte";
+    import { lang } from "$lib/stores/lang";
+    import { content } from "$lib/content";
+
     let visible = false;
     onMount(() => setTimeout(() => (visible = true), 100));
+
+    $: t = content[$lang].opening;
 </script>
 
 <section id="opening" class="opening-section w-full">
@@ -14,27 +19,25 @@
         <div class="left-panel">
             <div class="badge anim d1">
                 <span class="badge-dot"></span>
-                IDN Boarding School · Software Engineer
+                {t.badge}
             </div>
 
-            <p class="greeting anim d2">Hello, I'm</p>
+            <p class="greeting anim d2">{t.greeting}</p>
 
             <!-- REVISED: name split to 2 lines, more breathing room -->
             <h1 class="name anim d3">
-                Jose Shabra
+                {t.nameLine1}
                 <br />
-                <span class="name-highlight"> </span>
+                <span class="name-highlight">{t.nameLine2}</span>
             </h1>
 
             <div class="chips anim d4">
-                <span class="chip chip-filled">Full Stack Developer</span>
-                <span class="chip chip-outline">Web Engineer</span>
+                <span class="chip chip-filled">{t.chip1}</span>
+                <span class="chip chip-outline">{t.chip2}</span>
             </div>
 
             <p class="bio anim d5">
-                Building <strong>clean</strong>, <strong>responsive</strong>,
-                and <strong>modern</strong> web experiences — empowering local businesses
-                to grow online.
+                {@html t.bio.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
             </p>
 
             <div class="mission-card anim d6">
@@ -54,14 +57,13 @@
                     />
                 </svg>
                 <p>
-                    This portfolio introduces my skills, experience, and career
-                    goals as a software engineer.
+                    {t.mission}
                 </p>
             </div>
 
             <div class="cta-group anim d7">
                 <a href="#about" class="btn-primary">
-                    Let's Begin
+                    {t.ctaBegin}
                     <svg
                         width="16"
                         height="16"
@@ -77,7 +79,7 @@
                         />
                     </svg>
                 </a>
-                <a href="#project1" class="btn-ghost">View Projects</a>
+                <a href="#project1" class="btn-ghost">{t.ctaProjects}</a>
             </div>
         </div>
 
@@ -104,20 +106,20 @@
                 <!-- Floating "available" badge -->
                 <div class="tag-available">
                     <span class="green-dot"></span>
-                    Available for Projects
+                    {t.available}
                 </div>
 
                 <!-- Floating role card -->
                 <div class="card-role">
-                    <span class="role-top">Full Stack</span>
-                    <span class="role-bot">Developer</span>
+                    <span class="role-top">{t.roleTop}</span>
+                    <span class="role-bot">{t.roleBot}</span>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="scroll-hint" class:visible>
-        <span>Scroll to explore</span>
+        <span>{t.scrollHint}</span>
         <div class="scroll-bar"></div>
     </div>
 </section>

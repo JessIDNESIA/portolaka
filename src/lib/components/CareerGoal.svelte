@@ -1,6 +1,11 @@
+<script lang="ts">
+    import { lang } from "$lib/stores/lang";
+    import { content } from "$lib/content";
+    $: t = content[$lang].careerGoal;
+</script>
 <section id="career-goal" class="section-container">
     <div class="section-content">
-        <h2 class="section-title">Tujuan & Rencana Karier</h2>
+        <h2 class="section-title">{t.title}</h2>
 
         <div class="max-w-5xl mx-auto space-y-6">
             <!-- Vision Statement -->
@@ -8,12 +13,11 @@
                 class="card bg-gradient-to-r from-primary-600 to-primary-500 text-white"
             >
                 <div class="text-center py-6">
-                    <h3 class="text-3xl font-bold mb-4">Visi Karier Saya</h3>
+                    <h3 class="text-3xl font-bold mb-4">{t.visionTitle}</h3>
                     <p
                         class="text-xl md:text-2xl italic leading-relaxed max-w-3xl mx-auto"
                     >
-                        Menjadi seorang Full Stack Developer yang berkontribusi
-                        menciptakan solusi teknologi berdampak sosial
+                        {t.visionBody}
                     </p>
                 </div>
             </div>
@@ -27,11 +31,10 @@
                         <span class="text-3xl">🎯</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-3 text-slate-800">
-                        Target Jangka Pendek
+                        {t.shortTerm}
                     </h3>
                     <p class="text-slate-600">
-                        1-2 tahun - Menguasai framework modern dan mendapat
-                        pekerjaan pertama
+                        {t.shortTermBody}
                     </p>
                 </div>
 
@@ -42,11 +45,10 @@
                         <span class="text-3xl">🚀</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-3 text-slate-800">
-                        Target Jangka Menengah
+                        {t.midTerm}
                     </h3>
                     <p class="text-slate-600">
-                        3-5 tahun - Menjadi senior developer dan memimpin tim
-                        kecil
+                        {t.midTermBody}
                     </p>
                 </div>
 
@@ -57,11 +59,10 @@
                         <span class="text-3xl">⭐</span>
                     </div>
                     <h3 class="text-xl font-semibold mb-3 text-slate-800">
-                        Target Jangka Panjang
+                        {t.longTerm}
                     </h3>
                     <p class="text-slate-600">
-                        5+ tahun - Membangun startup sendiri atau menjadi tech
-                        lead
+                        {t.longTermBody}
                     </p>
                 </div>
             </div>
@@ -71,12 +72,12 @@
                 <h3
                     class="text-2xl font-semibold mb-6 text-primary-600 flex items-center gap-2"
                 >
-                    <span>📈</span> Skills yang Ingin Dikembangkan
+                    <span>📈</span> {t.skillsTitle}
                 </h3>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
                         <h4 class="font-semibold text-slate-700 mb-3">
-                            Technical Skills
+                            {t.technicalSkills}
                         </h4>
                         <ul class="space-y-2">
                             <li class="flex items-center gap-2">
@@ -101,7 +102,7 @@
                     </div>
                     <div>
                         <h4 class="font-semibold text-slate-700 mb-3">
-                            Professional Skills
+                            {t.professionalSkills}
                         </h4>
                         <ul class="space-y-2">
                             <li class="flex items-center gap-2">
@@ -134,12 +135,10 @@
                 <h3
                     class="text-2xl font-semibold mb-4 text-green-700 flex items-center gap-2"
                 >
-                    <span>🌱</span> Kontribusi yang Ingin Diberikan
+                    <span>🌱</span> {t.contributionTitle}
                 </h3>
                 <p class="text-lg text-slate-700 leading-relaxed">
-                    Menciptakan produk teknologi yang membantu UMKM berkembang,
-                    berbagi ilmu melalui mentoring, atau berkontribusi dalam
-                    open-source community
+                    {t.contributionBody}
                 </p>
             </div>
         </div>
