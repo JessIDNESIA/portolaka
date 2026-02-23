@@ -41,6 +41,26 @@
                     <ul class="space-y-4">
                         <li class="border-l-4 border-blue-400 pl-4 py-2">
                             <p class="font-semibold text-slate-800">
+                                Basic of AI
+                            </p>
+                            <p class="text-sm text-slate-600">Dicoding</p>
+                        </li>
+                        <li class="border-l-4 border-blue-400 pl-4 py-2">
+                            <p class="font-semibold text-slate-800">
+                                Learning to Use Generative AI
+                            </p>
+                            <p class="text-sm text-slate-600">Dicoding</p>
+                        </li>
+                        <li class="border-l-4 border-blue-400 pl-4 py-2">
+                            <p class="font-semibold text-slate-800">
+                                Generative Al for Educators with Gemini
+                                Certificate
+                            </p>
+                            <p class="text-sm text-slate-600">Google</p>
+                        </li>
+
+                        <li class="border-l-4 border-blue-400 pl-4 py-2">
+                            <p class="font-semibold text-slate-800">
                                 Coding Foundations
                             </p>
                             <p class="text-sm text-slate-600">
@@ -95,18 +115,10 @@
                     <ul class="space-y-4">
                         <li class="border-l-4 border-green-400 pl-4 py-2">
                             <p class="font-semibold text-slate-800">
-                                Flutter Development Series
+                                Flutter Development
                             </p>
                             <p class="text-sm text-slate-600">
-                                IDN Networkers - 2024
-                            </p>
-                        </li>
-                        <li class="border-l-4 border-green-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                UI Development in Canva
-                            </p>
-                            <p class="text-sm text-slate-600">
-                                Canva Workshop - 2024
+                                GDG (Google Developer Group)
                             </p>
                         </li>
                     </ul>

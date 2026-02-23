@@ -10,10 +10,9 @@
                     Terima Kasih! 🙏
                 </h2>
                 <p class="text-xl md:text-2xl leading-relaxed opacity-90">
-                    [Ringkasan singkat - contoh: Saya berharap presentasi ini
-                    memberikan gambaran jelas tentang pengalaman, kemampuan, dan
-                    tujuan karier saya. Saya sangat antusias untuk terus belajar
-                    dan berkontribusi.]
+                    Saya berharap presentasi ini memberikan gambaran jelas
+                    tentang pengalaman, kemampuan, dan tujuan karier saya. Saya
+                    sangat antusias untuk terus belajar dan berkontribusi.
                 </p>
             </div>
 
@@ -27,21 +26,15 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <div>
                         <div class="text-4xl mb-3">💪</div>
-                        <p class="font-medium">
-                            [Keunggulan 1 - contoh: Fast Learner]
-                        </p>
+                        <p class="font-medium">Never Give Up</p>
                     </div>
                     <div>
                         <div class="text-4xl mb-3">🎯</div>
-                        <p class="font-medium">
-                            [Keunggulan 2 - contoh: Hasil-Oriented]
-                        </p>
+                        <p class="font-medium">Hasil-Oriented</p>
                     </div>
                     <div>
                         <div class="text-4xl mb-3">🤝</div>
-                        <p class="font-medium">
-                            [Keunggulan 3 - contoh: Team Player]
-                        </p>
+                        <p class="font-medium">Good Management</p>
                     </div>
                 </div>
             </div>
@@ -76,8 +69,7 @@
                     <div class="flex items-center justify-center gap-3 text-lg">
                         <span>📱</span>
                         <span class="font-medium">Phone:</span>
-                        <span class="text-primary-300">+62 822-4551-7041</span
-                        >
+                        <span class="text-primary-300">+62 822-4551-7041</span>
                     </div>
                     <div class="flex items-center justify-center gap-3 text-lg">
                         <span>🌐</span>
@@ -106,8 +98,8 @@
             <!-- Footer -->
             <div class="pt-8 border-t border-white/20">
                 <p class="text-sm opacity-75">
-                    © 2026 [Nama Anda] | Dibuat dengan ❤️ menggunakan SvelteKit
-                    & Tailwind CSS
+                    © 2026 Jose Shabra Shatilla Rajjawani | Dibuat dengan ❤️
+                    menggunakan SvelteKit & Tailwind CSS
                 </p>
             </div>
         </div>

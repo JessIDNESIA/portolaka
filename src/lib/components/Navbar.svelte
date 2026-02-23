@@ -84,7 +84,7 @@
     <!-- Top: Logo -->
     <div class="nav-logo">
         <span class="logo-text">J</span>
-        <span class="logo-sub">Portofolio</span>
+        <span class="logo-sub">Portfolio</span>
     </div>
 
     <!-- Divider -->

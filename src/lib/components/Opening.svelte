@@ -77,7 +77,7 @@
                         />
                     </svg>
                 </a>
-                <a href="#projects" class="btn-ghost">View Projects</a>
+                <a href="#project1" class="btn-ghost">View Projects</a>
             </div>
         </div>
 

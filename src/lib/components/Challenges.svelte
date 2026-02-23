@@ -14,17 +14,9 @@
                             Tantangan Terbesar
                         </h3>
                         <p class="text-lg text-slate-600 leading-relaxed">
-                            [Ceritakan tantangan terbesar yang pernah dihadapi -
-                            bisa dalam project, organisasi, atau kehidupan
-                            akademik. Jelaskan situasinya secara konkret]
+                            Menjadi seorang web developer
                         </p>
                     </div>
-                </div>
-                <div class="bg-red-50 p-4 rounded-lg mt-4">
-                    <p class="text-slate-700 italic">
-                        "[Kutipan singkat yang menggambarkan momen sulit
-                        tersebut]"
-                    </p>
                 </div>
             </div>
 
@@ -39,8 +31,8 @@
                             Cara Mengatasinya
                         </h3>
                         <p class="text-lg text-slate-600 leading-relaxed mb-4">
-                            [Jelaskan langkah-langkah yang diambil untuk
-                            mengatasi tantangan tersebut]
+                            Mencari mentor atau belajar dari sumber-sumber
+                            online
                         </p>
                     </div>
                 </div>
@@ -50,7 +42,7 @@
                             Strategi 1
                         </h4>
                         <p class="text-slate-600">
-                            [Contoh: Mencari mentor atau bertanya kepada ahli]
+                            Belajar dari sumber-sumber yang terpercaya
                         </p>
                     </div>
                     <div class="bg-blue-50 p-4 rounded-lg">
@@ -58,7 +50,8 @@
                             Strategi 2
                         </h4>
                         <p class="text-slate-600">
-                            [Contoh: Membagi tugas menjadi bagian-bagian kecil]
+                            Membuat sebuah proyek dan membagikan-nya ke media
+                            sosial
                         </p>
                     </div>
                     <div class="bg-blue-50 p-4 rounded-lg">
@@ -66,15 +59,7 @@
                             Strategi 3
                         </h4>
                         <p class="text-slate-600">
-                            [Contoh: Belajar dari kesalahan dan iterasi]
-                        </p>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h4 class="font-semibold text-blue-700 mb-2">
-                            Strategi 4
-                        </h4>
-                        <p class="text-slate-600">
-                            [Contoh: Kolaborasi dengan tim]
+                            Perbanyak pengalaman dengan membuat proyek
                         </p>
                     </div>
                 </div>
@@ -99,11 +84,11 @@
                                 >
                                 <div>
                                     <p class="font-semibold text-slate-800">
-                                        [Pelajaran 1]
+                                        Pelajaran 1
                                     </p>
                                     <p class="text-slate-600">
-                                        [Penjelasan - contoh: Pentingnya
-                                        perencanaan yang matang]
+                                        Pentingnya belajar dari sumber-sumber
+                                        yang terpercaya
                                     </p>
                                 </div>
                             </li>
@@ -113,11 +98,11 @@
                                 >
                                 <div>
                                     <p class="font-semibold text-slate-800">
-                                        [Pelajaran 2]
+                                        Pelajaran 2
                                     </p>
                                     <p class="text-slate-600">
-                                        [Penjelasan - contoh: Komunikasi adalah
-                                        kunci sukses]
+                                        Pentingnya membuat portofolio dan
+                                        membagikan-nya ke media sosial
                                     </p>
                                 </div>
                             </li>
@@ -127,11 +112,11 @@
                                 >
                                 <div>
                                     <p class="font-semibold text-slate-800">
-                                        [Pelajaran 3]
+                                        Pelajaran 3
                                     </p>
                                     <p class="text-slate-600">
-                                        [Penjelasan - contoh: Kegagalan adalah
-                                        bagian dari proses belajar]
+                                        Pentingnya perbanyak pengalaman dengan
+                                        membuat proyek
                                     </p>
                                 </div>
                             </li>
