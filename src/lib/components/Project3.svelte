@@ -1,16 +1,18 @@
 <section id="project3" class="section-container bg-slate-50">
     <div class="section-content">
-        <h2 class="section-title">Project 3 / Pengalaman Lainnya</h2>
-
         <div class="max-w-4xl mx-auto">
             <div class="card">
                 <div class="mb-6">
-                    <h3 class="text-3xl font-bold text-slate-800 mb-2">
-                        [Judul Project 3 / Pengalaman Magang / Organisasi /
-                        Kompetisi]
-                    </h3>
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="bg-teal-100 p-2 rounded-lg text-teal-600">
+                            <i class="fa-solid fa-clipboard-user text-xl"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-slate-800">
+                            Smart Attendance System
+                        </h3>
+                    </div>
                     <p class="text-primary-600 font-medium">
-                        [Tanggal / Periode]
+                        Flutter Development · 2024
                     </p>
                 </div>
 
@@ -19,26 +21,31 @@
                         <h4
                             class="text-xl font-semibold text-slate-700 mb-3 flex items-center gap-2"
                         >
-                            <span class="text-2xl">📝</span> Deskripsi
+                            <span class="text-teal-500"
+                                ><i class="fa-solid fa-file-lines"></i></span
+                            > Deskripsi
                         </h4>
                         <p class="text-lg text-slate-600 leading-relaxed">
-                            [Jelaskan pengalaman ini - bisa berupa project
-                            ketiga, pengalaman magang, aktif di organisasi, atau
-                            mengikuti kompetisi. Ceritakan konteks dan aktivitas
-                            yang dilakukan]
+                            Aplikasi manajemen kehadiran yang dirancang untuk
+                            efisiensi instansi atau sekolah. Aplikasi ini
+                            memungkinkan pencatatan data presensi secara digital
+                            dengan alur kerja yang terstruktur dan aman.
                         </p>
                     </div>
 
-                    <div class="bg-primary-50 p-6 rounded-xl">
+                    <div class="bg-teal-50 p-6 rounded-xl">
                         <h4
-                            class="text-xl font-semibold text-primary-700 mb-3 flex items-center gap-2"
+                            class="text-xl font-semibold text-teal-700 mb-3 flex items-center gap-2"
                         >
-                            <span class="text-2xl">🎯</span> Tujuan / Motivasi
+                            <span class="text-teal-500"
+                                ><i class="fa-solid fa-bullseye"></i></span
+                            > Tujuan / Motivasi
                         </h4>
                         <p class="text-lg text-slate-700 leading-relaxed">
-                            [Mengapa mengikuti pengalaman ini? Tujuan pribadi,
-                            keterampilan yang ingin dikembangkan, atau
-                            kesempatan yang ingin dimanfaatkan]
+                            Menggantikan sistem absen manual yang tidak efisien,
+                            mempermudah rekapitulasi data kehadiran secara
+                            otomatis, serta meningkatkan disiplin melalui
+                            pencatatan waktu yang real-time.
                         </p>
                     </div>
 
@@ -46,12 +53,15 @@
                         <h4
                             class="text-xl font-semibold text-slate-700 mb-3 flex items-center gap-2"
                         >
-                            <span class="text-2xl">👤</span> Peran & Kontribusi
+                            <span class="text-teal-500"
+                                ><i class="fa-solid fa-user-gear"></i></span
+                            > Peran & Kontribusi
                         </h4>
                         <p class="text-lg text-slate-600 leading-relaxed">
-                            [Peran yang dijalankan, tanggung jawab yang
-                            diberikan, bagaimana berkontribusi untuk
-                            tim/organisasi/perusahaan]
+                            Sebagai <strong>Full Stack Developer</strong> dalam projek
+                            ini, saya mengelola manajemen state aplikasi, integrasi
+                            form input data presensi, serta memastikan validasi data
+                            berjalan dengan tepat di sisi klien.
                         </p>
                     </div>
 
@@ -61,31 +71,54 @@
                         <h4
                             class="text-xl font-semibold text-green-700 mb-3 flex items-center gap-2"
                         >
-                            <span class="text-2xl">✨</span> Hasil & Pembelajaran
+                            <span class="text-green-600"
+                                ><i class="fa-solid fa-wand-magic-sparkles"
+                                ></i></span
+                            > Hasil & Pembelajaran
                         </h4>
                         <ul class="space-y-2 text-lg text-slate-700">
                             <li class="flex items-start gap-2">
-                                <span class="text-green-600 mt-1">•</span>
+                                <span class="text-green-600 mt-1"
+                                    ><i class="fa-solid fa-check text-sm"
+                                    ></i></span
+                                >
                                 <span
-                                    >[Hasil 1 - contoh: Berhasil menyelesaikan
-                                    tugas dengan baik]</span
+                                    >Berhasil membangun sistem pengelolaan
+                                    status yang stabil dan reliabel.</span
                                 >
                             </li>
                             <li class="flex items-start gap-2">
-                                <span class="text-green-600 mt-1">•</span>
+                                <span class="text-green-600 mt-1"
+                                    ><i class="fa-solid fa-check text-sm"
+                                    ></i></span
+                                >
                                 <span
-                                    >[Hasil 2 - contoh: Dipercaya memimpin
-                                    sub-tim]</span
+                                    >Peningkatan pemahaman tentang manajemen
+                                    basis data mobile sederhana.</span
                                 >
                             </li>
                             <li class="flex items-start gap-2">
-                                <span class="text-green-600 mt-1">•</span>
+                                <span class="text-green-600 mt-1"
+                                    ><i class="fa-solid fa-check text-sm"
+                                    ></i></span
+                                >
                                 <span
-                                    >[Pembelajaran - contoh: Belajar cara kerja
-                                    profesional]</span
+                                    >Belajar cara menangani input data pengguna
+                                    dengan validasi yang ketat.</span
                                 >
                             </li>
                         </ul>
+                    </div>
+
+                    <div class="pt-4">
+                        <a
+                            href="https://github.com/JessIDNESIA/attendance-app"
+                            target="_blank"
+                            class="inline-flex items-center gap-2 bg-slate-800 text-white px-5 py-2.5 rounded-lg hover:bg-slate-700 transition-colors"
+                        >
+                            <i class="fa-brands fa-github"></i>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
             </div>

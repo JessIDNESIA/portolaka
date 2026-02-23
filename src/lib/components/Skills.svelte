@@ -1,167 +1,705 @@
-<section id="skills" class="section-container">
-    <div class="section-content">
-        <h2 class="section-title">Kemampuan & Keahlian</h2>
+<script lang="ts">
+    import { onMount } from "svelte";
 
-        <div class="space-y-8">
-            <!-- Hard Skills -->
-            <div class="card">
-                <h3
-                    class="text-2xl font-semibold mb-6 text-primary-600 flex items-center gap-2"
-                >
-                    <span>💼</span> Hard Skills
-                </h3>
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="font-medium text-slate-700"
-                                >[Skill 1 - contoh: Video Editing]</span
-                            >
-                            <span class="text-primary-600 font-semibold"
-                                >85%</span
-                            >
-                        </div>
-                        <div
-                            class="bg-slate-200 rounded-full h-3 overflow-hidden"
-                        >
-                            <div
-                                class="bg-gradient-to-r from-primary-600 to-primary-400 h-full rounded-full"
-                                style="width: 85%"
-                            ></div>
-                        </div>
-                    </div>
+    let visible = false;
+    let barsAnimated = false;
 
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="font-medium text-slate-700"
-                                >Programming (HTML,CSS,JS)</span
-                            >
-                            <span class="text-primary-600 font-semibold"
-                                >70%</span
-                            >
-                        </div>
-                        <div
-                            class="bg-slate-200 rounded-full h-3 overflow-hidden"
-                        >
-                            <div
-                                class="bg-gradient-to-r from-primary-600 to-primary-400 h-full rounded-full"
-                                style="width: 70%"
-                            ></div>
-                        </div>
-                    </div>
+    onMount(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    visible = true;
+                    setTimeout(() => (barsAnimated = true), 400);
+                }
+            },
+            { threshold: 0.1 },
+        );
+        const section = document.getElementById("skills");
+        if (section) observer.observe(section);
+        return () => observer.disconnect();
+    });
 
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="font-medium text-slate-700"
-                                >[Skill 3 - contoh: Graphic Design]</span
-                            >
-                            <span class="text-primary-600 font-semibold"
-                                >80%</span
-                            >
-                        </div>
-                        <div
-                            class="bg-slate-200 rounded-full h-3 overflow-hidden"
-                        >
-                            <div
-                                class="bg-gradient-to-r from-primary-600 to-primary-400 h-full rounded-full"
-                                style="width: 80%"
-                            ></div>
-                        </div>
-                    </div>
+    // Sorted descending by pct
+    const hardSkills = [
+        { name: "HTML & CSS", pct: 100, icon: "vscode-icons:file-type-html" },
+        { name: "Git", pct: 100, icon: "logos:git-icon" },
+        { name: "Svelte", pct: 85, icon: "vscode-icons:file-type-svelte" },
+        { name: "Laravel", pct: 80, icon: "logos:laravel" },
+        { name: "Flutter", pct: 80, icon: "logos:flutter" },
+        { name: "Tailwind CSS", pct: 75, icon: "logos:tailwindcss-icon" },
+        { name: "JavaScript", pct: 70, icon: "logos:javascript" },
+    ];
 
-                    <div>
-                        <div class="flex justify-between mb-2">
-                            <span class="font-medium text-slate-700"
-                                >[Skill 4 - contoh: Public Speaking]</span
-                            >
-                            <span class="text-primary-600 font-semibold"
-                                >75%</span
-                            >
-                        </div>
-                        <div
-                            class="bg-slate-200 rounded-full h-3 overflow-hidden"
-                        >
-                            <div
-                                class="bg-gradient-to-r from-primary-600 to-primary-400 h-full rounded-full"
-                                style="width: 75%"
-                            ></div>
-                        </div>
-                    </div>
+    const tools = [
+        { name: "HTML5", icon: "logos:html-5" },
+        { name: "CSS3", icon: "logos:css-3" },
+        { name: "Figma", icon: "logos:figma" },
+        { name: "VS Code", icon: "logos:visual-studio-code" },
+        { name: "Git", icon: "logos:git-icon" },
+        { name: "Chrome", icon: "logos:chrome" },
+        { name: "MySQL", icon: "logos:mysql" },
+        { name: "Laravel+Composer", icon: "logos:laravel" },
+    ];
+
+    const softSkills = [
+        {
+            name: "Communication",
+            desc: "Express ideas clearly and confidently",
+            icon: "fluent:chat-bubbles-question-24-regular",
+        },
+        {
+            name: "Teamwork",
+            desc: "Collaborate effectively in any team",
+            icon: "fluent:people-team-24-regular",
+        },
+        {
+            name: "Problem Solving",
+            desc: "Find creative solutions under pressure",
+            icon: "fluent:lightbulb-24-regular",
+        },
+        {
+            name: "Critical Thinking",
+            desc: "Analyse situations with logic and clarity",
+            icon: "fluent:brain-circuit-24-regular",
+        },
+        {
+            name: "Adaptability",
+            desc: "Thrive in fast-changing environments",
+            icon: "fluent:arrow-sync-24-regular",
+        },
+        {
+            name: "Time Management",
+            desc: "Deliver quality work on schedule",
+            icon: "fluent:clock-24-regular",
+        },
+    ];
+</script>
+
+<!--
+    ⚠️  ENVIRONMENT NOTES:
+    1. Iconify Web Component — no npm needed, loaded via CDN in <svelte:head>
+    2. Fonts — Bunny Fonts (bunny.net) replaces Google Fonts (GDPR-friendly)
+-->
+<svelte:head>
+    <!-- Iconify Web Component — use <iconify-icon icon="..."> anywhere -->
+    <script
+        src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
+    ></script>
+</svelte:head>
+
+<section id="skills" class="skills-section w-full">
+    <!-- BG blobs — one per section accent color -->
+    <div class="blob blob-cyan"></div>
+    <div class="blob blob-purple"></div>
+    <div class="blob blob-pink"></div>
+    <div class="bg-grid"></div>
+
+    <div class="content-wrapper" class:visible>
+        <!-- ── Section Header ── -->
+        <div class="section-header anim d1">
+            <span class="section-tag">
+                <span class="tag-dot"></span>
+                What I Can Do
+            </span>
+            <h2 class="section-title">Skills & Expertise</h2>
+            <p class="section-subtitle">
+                A toolkit built through hands-on projects, real coursework, and
+                relentless curiosity — always growing.
+            </p>
+        </div>
+
+        <!-- ══════════════════════════════════
+             ①  HARD SKILLS  —  CYAN accent
+        ══════════════════════════════════ -->
+        <div class="block anim d2">
+            <div class="block-header">
+                <div class="block-icon-wrap icon-cyan">
+                    <iconify-icon icon="fluent:code-24-regular" width="24"
+                    ></iconify-icon>
+                </div>
+                <div>
+                    <h3 class="block-title title-cyan">Hard Skills</h3>
+                    <p class="block-sub">Core technical proficiency</p>
                 </div>
             </div>
 
-            <!-- Tools & Software -->
-            <div class="card">
-                <h3
-                    class="text-2xl font-semibold mb-6 text-primary-600 flex items-center gap-2"
-                >
-                    <span>🛠️</span> Tools & Software
-                </h3>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div
-                        class="bg-slate-50 p-4 rounded-lg text-center hover:bg-primary-50 transition-colors"
-                    >
-                        <div class="text-3xl mb-2">🎬</div>
-                        <p class="font-medium text-slate-700">
-                            [Adobe Premiere]
-                        </p>
+            <div class="bar-list">
+                {#each hardSkills as skill}
+                    <div class="bar-row">
+                        <div class="bar-meta">
+                            <div class="bar-name-row">
+                                <iconify-icon
+                                    icon={skill.icon}
+                                    width="18"
+                                    class="skill-icon"
+                                ></iconify-icon>
+                                <span class="bar-name">{skill.name}</span>
+                            </div>
+                            <span class="bar-pct pct-cyan">{skill.pct}%</span>
+                        </div>
+                        <div class="bar-track">
+                            <div
+                                class="bar-fill fill-cyan"
+                                style="width: {barsAnimated ? skill.pct : 0}%"
+                            ></div>
+                        </div>
                     </div>
-                    <div
-                        class="bg-slate-50 p-4 rounded-lg text-center hover:bg-primary-50 transition-colors"
-                    >
-                        <div class="text-3xl mb-2">🎨</div>
-                        <p class="font-medium text-slate-700">[Figma]</p>
-                    </div>
-                    <div
-                        class="bg-slate-50 p-4 rounded-lg text-center hover:bg-primary-50 transition-colors"
-                    >
-                        <div class="text-3xl mb-2">💻</div>
-                        <p class="font-medium text-slate-700">[VS Code]</p>
-                    </div>
-                    <div
-                        class="bg-slate-50 p-4 rounded-lg text-center hover:bg-primary-50 transition-colors"
-                    >
-                        <div class="text-3xl mb-2">📊</div>
-                        <p class="font-medium text-slate-700">
-                            [Microsoft Office]
-                        </p>
-                    </div>
+                {/each}
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             ②  TOOLS & SOFTWARE  —  PURPLE accent
+        ══════════════════════════════════ -->
+        <div class="block anim d3">
+            <div class="block-header">
+                <div class="block-icon-wrap icon-purple">
+                    <iconify-icon
+                        icon="fluent:wrench-screwdriver-24-regular"
+                        width="24"
+                    ></iconify-icon>
+                </div>
+                <div>
+                    <h3 class="block-title title-purple">
+                        Tools &amp; Software
+                    </h3>
+                    <p class="block-sub">Technologies I work with daily</p>
                 </div>
             </div>
 
-            <!-- Soft Skills -->
-            <div class="card bg-gradient-to-br from-primary-50 to-white">
-                <h3
-                    class="text-2xl font-semibold mb-6 text-primary-600 flex items-center gap-2"
-                >
-                    <span>🌟</span> Soft Skills
-                </h3>
-                <div class="grid md:grid-cols-3 gap-4">
-                    <div class="bg-white p-4 rounded-lg shadow-sm">
-                        <h4 class="font-semibold text-primary-600 mb-2">
-                            Komunikasi
-                        </h4>
-                        <p class="text-sm text-slate-600">
-                            Mampu menyampaikan ide dengan jelas
-                        </p>
+            <div class="tools-grid">
+                {#each tools as tool}
+                    <div class="tool-card tool-purple">
+                        <iconify-icon
+                            icon={tool.icon}
+                            width="36"
+                            class="tool-icon"
+                        ></iconify-icon>
+                        <span class="tool-name">{tool.name}</span>
                     </div>
-                    <div class="bg-white p-4 rounded-lg shadow-sm">
-                        <h4 class="font-semibold text-primary-600 mb-2">
-                            Teamwork
-                        </h4>
-                        <p class="text-sm text-slate-600">
-                            Bekerja efektif dalam tim
-                        </p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-sm">
-                        <h4 class="font-semibold text-primary-600 mb-2">
-                            Problem Solving
-                        </h4>
-                        <p class="text-sm text-slate-600">
-                            Mencari solusi kreatif
-                        </p>
-                    </div>
+                {/each}
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             ③  SOFT SKILLS  —  PINK accent
+        ══════════════════════════════════ -->
+        <div class="block anim d4">
+            <div class="block-header">
+                <div class="block-icon-wrap icon-pink">
+                    <iconify-icon icon="fluent:star-24-regular" width="24"
+                    ></iconify-icon>
                 </div>
+                <div>
+                    <h3 class="block-title title-pink">Soft Skills</h3>
+                    <p class="block-sub">How I work and think with others</p>
+                </div>
+            </div>
+
+            <div class="soft-grid">
+                {#each softSkills as s}
+                    <div class="soft-card">
+                        <div class="soft-icon-wrap">
+                            <iconify-icon icon={s.icon} width="22"
+                            ></iconify-icon>
+                        </div>
+                        <h4 class="soft-name">{s.name}</h4>
+                        <p class="soft-desc">{s.desc}</p>
+                    </div>
+                {/each}
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* ── Design tokens ── */
+    :root {
+        --bg: #030c1a;
+        --text: #eef4ff;
+        --muted: rgba(238, 244, 255, 0.46);
+        --glass: rgba(255, 255, 255, 0.04);
+        --border: rgba(255, 255, 255, 0.08);
+
+        /* Cyan — Hard Skills */
+        --cyan: #22d3ee;
+        --cyan-soft: rgba(34, 211, 238, 0.1);
+        --cyan-border: rgba(34, 211, 238, 0.25);
+        --cyan-bar: linear-gradient(90deg, #22d3ee 0%, #67e8f9 100%);
+
+        /* Purple — Tools */
+        --purple: #a78bfa;
+        --purple-soft: rgba(167, 139, 250, 0.1);
+        --purple-border: rgba(167, 139, 250, 0.25);
+
+        /* Pink — Soft Skills */
+        --pink: #f472b6;
+        --pink-soft: rgba(244, 114, 182, 0.1);
+        --pink-border: rgba(244, 114, 182, 0.25);
+    }
+
+    /* ── Section shell ── */
+    .skills-section {
+        min-height: 100vh;
+        width: 100%;
+        background: var(--bg);
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-family: var(--font-b);
+        padding: 80px 0 96px;
+        overflow: hidden;
+    }
+
+    /* ── Background blobs ── */
+    .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        pointer-events: none;
+    }
+    .blob-cyan {
+        width: 380px;
+        height: 380px;
+        top: -8%;
+        left: -4%;
+        background: radial-gradient(
+            circle,
+            rgba(34, 211, 238, 0.11) 0%,
+            transparent 70%
+        );
+    }
+    .blob-purple {
+        width: 440px;
+        height: 440px;
+        top: 30%;
+        right: -5%;
+        background: radial-gradient(
+            circle,
+            rgba(167, 139, 250, 0.11) 0%,
+            transparent 70%
+        );
+    }
+    .blob-pink {
+        width: 340px;
+        height: 340px;
+        bottom: -5%;
+        left: 20%;
+        background: radial-gradient(
+            circle,
+            rgba(244, 114, 182, 0.09) 0%,
+            transparent 70%
+        );
+    }
+
+    .bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+                rgba(255, 255, 255, 0.022) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.022) 1px,
+                transparent 1px
+            );
+        background-size: 56px 56px;
+        mask-image: radial-gradient(
+            ellipse 90% 90% at 50% 50%,
+            black 20%,
+            transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+            ellipse 90% 90% at 50% 50%,
+            black 20%,
+            transparent 100%
+        );
+        pointer-events: none;
+    }
+
+    /* ── Content wrapper ── */
+    .content-wrapper {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 52px;
+    }
+
+    /* ── Stagger animations ── */
+    .anim {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+            opacity 0.65s ease,
+            transform 0.65s ease;
+    }
+    .content-wrapper.visible .anim.d1 {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0.1s;
+    }
+    .content-wrapper.visible .anim.d2 {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0.2s;
+    }
+    .content-wrapper.visible .anim.d3 {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0.32s;
+    }
+    .content-wrapper.visible .anim.d4 {
+        opacity: 1;
+        transform: none;
+        transition-delay: 0.44s;
+    }
+
+    /* ── Section header ── */
+    .section-header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .section-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--cyan-soft);
+        border: 1px solid var(--cyan-border);
+        color: var(--cyan);
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        padding: 6px 14px;
+        border-radius: 100px;
+        width: fit-content;
+    }
+    .tag-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--cyan);
+        box-shadow: 0 0 8px var(--cyan);
+        animation: pulse-dot 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+        0%,
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(0.75);
+        }
+    }
+
+    .section-title {
+        font-family: var(--font-d);
+        font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        color: var(--text);
+        margin: 0;
+    }
+    .title-accent {
+        background: linear-gradient(135deg, var(--cyan) 0%, #67e8f9 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+    }
+    .section-subtitle {
+        font-size: 1.08rem;
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.75;
+        margin: 0;
+        max-width: 560px;
+    }
+
+    /* ══════════════════════════
+       BLOCK — shared wrapper
+    ══════════════════════════ */
+    .block {
+        background: var(--glass);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 36px;
+        backdrop-filter: blur(14px);
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        position: relative;
+        overflow: hidden;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    .block:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 56px rgba(0, 0, 0, 0.38);
+    }
+
+    /* top accent line — hidden until hover */
+    .block::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+    .block:hover::before {
+        opacity: 1;
+    }
+
+    /* Per-block border/topbar color */
+    .anim.d2 {
+        border-color: var(--cyan-border);
+    }
+    .anim.d2::before {
+        background: linear-gradient(90deg, var(--cyan), transparent);
+    }
+
+    .anim.d3 {
+        border-color: var(--purple-border);
+    }
+    .anim.d3::before {
+        background: linear-gradient(90deg, var(--purple), transparent);
+    }
+
+    .anim.d4 {
+        border-color: var(--pink-border);
+    }
+    .anim.d4::before {
+        background: linear-gradient(90deg, var(--pink), transparent);
+    }
+
+    /* block header */
+    .block-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .block-icon-wrap {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .icon-cyan {
+        background: var(--cyan-soft);
+        border: 1px solid var(--cyan-border);
+        color: var(--cyan);
+    }
+    .icon-purple {
+        background: var(--purple-soft);
+        border: 1px solid var(--purple-border);
+        color: var(--purple);
+    }
+    .icon-pink {
+        background: var(--pink-soft);
+        border: 1px solid var(--pink-border);
+        color: var(--pink);
+    }
+
+    .block-title {
+        font-family: var(--font-d);
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+    .title-cyan {
+        color: var(--cyan);
+    }
+    .title-purple {
+        color: var(--purple);
+    }
+    .title-pink {
+        color: var(--pink);
+    }
+
+    .block-sub {
+        font-size: 0.82rem;
+        font-weight: 300;
+        color: var(--muted);
+        margin: 4px 0 0;
+        letter-spacing: 0.02em;
+    }
+
+    /* ══════════════════════════
+       ① HARD SKILLS — bars
+    ══════════════════════════ */
+    .bar-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .bar-row {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .bar-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .bar-name-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .skill-icon {
+        opacity: 0.85;
+        flex-shrink: 0;
+    }
+
+    .bar-name {
+        font-family: var(--font-d);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+    }
+    .bar-pct {
+        font-family: var(--font-d);
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+    .pct-cyan {
+        color: var(--cyan);
+    }
+
+    /* Track */
+    .bar-track {
+        height: 8px;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.07);
+        overflow: hidden;
+    }
+
+    /* Fill — animated width */
+    .bar-fill {
+        height: 100%;
+        border-radius: 100px;
+        transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fill-cyan {
+        background: var(--cyan-bar);
+        box-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+    }
+
+    /* ══════════════════════════
+       ② TOOLS — grid cards
+    ══════════════════════════ */
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+    }
+    .tool-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px 12px;
+        border-radius: 14px;
+        background: rgba(167, 139, 250, 0.06);
+        border: 1px solid rgba(167, 139, 250, 0.14);
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
+        cursor: default;
+    }
+    .tool-card:hover {
+        background: rgba(167, 139, 250, 0.13);
+        border-color: var(--purple-border);
+        transform: translateY(-3px);
+    }
+    .tool-icon {
+        opacity: 0.9;
+    }
+    .tool-name {
+        font-family: var(--font-d);
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text);
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    /* ══════════════════════════
+       ③ SOFT SKILLS — grid cards
+    ══════════════════════════ */
+    .soft-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    .soft-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 24px 22px;
+        border-radius: 16px;
+        background: rgba(244, 114, 182, 0.05);
+        border: 1px solid rgba(244, 114, 182, 0.14);
+        transition:
+            background 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+    .soft-card:hover {
+        background: rgba(244, 114, 182, 0.11);
+        border-color: var(--pink-border);
+        transform: translateY(-3px);
+    }
+    .soft-icon-wrap {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: var(--pink-soft);
+        border: 1px solid var(--pink-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--pink);
+    }
+    .soft-name {
+        font-family: var(--font-d);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+    .soft-desc {
+        font-size: 0.85rem;
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.65;
+        margin: 0;
+    }
+</style>

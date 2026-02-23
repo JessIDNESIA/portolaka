@@ -56,38 +56,38 @@
                         <span>📧</span>
                         <span class="font-medium">Email:</span>
                         <a
-                            href="mailto:email@example.com"
+                            href="mailto:joseidnn1@gmail.com"
                             class="text-primary-300 hover:text-primary-200 transition-colors"
                         >
-                            [email@example.com]
+                            joseidnn1@gmail.com
                         </a>
                     </div>
                     <div class="flex items-center justify-center gap-3 text-lg">
                         <span>💼</span>
                         <span class="font-medium">LinkedIn:</span>
                         <a
-                            href="https://linkedin.com/in/username"
+                            href="https://www.linkedin.com/in/jose-shabra-l1nk3d1n/"
                             target="_blank"
                             class="text-primary-300 hover:text-primary-200 transition-colors"
                         >
-                            [linkedin.com/in/username]
+                            www.linkedin.com/in/jose-shabra-l1nk3d1n/
                         </a>
                     </div>
                     <div class="flex items-center justify-center gap-3 text-lg">
                         <span>📱</span>
                         <span class="font-medium">Phone:</span>
-                        <span class="text-primary-300">[+62 xxx-xxxx-xxxx]</span
+                        <span class="text-primary-300">+62 822-4551-7041</span
                         >
                     </div>
                     <div class="flex items-center justify-center gap-3 text-lg">
                         <span>🌐</span>
-                        <span class="font-medium">Portfolio:</span>
+                        <span class="font-medium">Github:</span>
                         <a
-                            href="https://yourportfolio.com"
+                            href="https://github.com/JessIDNESIA"
                             target="_blank"
                             class="text-primary-300 hover:text-primary-200 transition-colors"
                         >
-                            [yourportfolio.com]
+                            JessIDNESIA
                         </a>
                     </div>
                 </div>
