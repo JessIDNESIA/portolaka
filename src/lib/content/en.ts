@@ -90,7 +90,7 @@ export const en = {
 
     project1: {
         title: "QR Generator & Scanner",
-        meta: "Flutter Development · 2024",
+        meta: "Flutter Development",
         descLabel: "Description",
         desc: "A Flutter-based mobile app that lets users scan various QR codes and generate custom QR codes from text or links.",
         goalTitle: "Project Goal",
@@ -108,7 +108,7 @@ export const en = {
 
     project2: {
         title: "UI E-commerce Implementation",
-        meta: "Flutter Development · 2024",
+        meta: "Flutter Development",
         descLabel: "Description",
         desc: "Exploration of modern online shopping app interface design with Flutter.",
         goalTitle: "Project Goal",
@@ -126,7 +126,7 @@ export const en = {
 
     project3: {
         title: "Smart Attendance System",
-        meta: "Flutter Development · 2024",
+        meta: "Flutter Development",
         descLabel: "Description",
         desc: "An attendance management app for institutions or schools.",
         goalTitle: "Goal / Motivation",

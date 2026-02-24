@@ -90,7 +90,7 @@ export const id = {
 
     project1: {
         title: "QR Generator & Scanner",
-        meta: "Pengembangan Flutter · 2024",
+        meta: "Pengembangan Flutter",
         descLabel: "Deskripsi",
         desc: "Aplikasi mobile berbasis Flutter untuk memindai berbagai jenis kode QR dan menghasilkan kode QR kustom dari teks atau link.",
         goalTitle: "Tujuan Proyek",
@@ -108,7 +108,7 @@ export const id = {
 
     project2: {
         title: "UI E-commerce Implementation",
-        meta: "Pengembangan Flutter · 2024",
+        meta: "Pengembangan Flutter",
         descLabel: "Deskripsi",
         desc: "Eksplorasi desain antarmuka aplikasi belanja online modern dengan Flutter.",
         goalTitle: "Tujuan Proyek",
@@ -126,7 +126,7 @@ export const id = {
 
     project3: {
         title: "Smart Attendance System",
-        meta: "Pengembangan Flutter · 2024",
+        meta: "Pengembangan Flutter",
         descLabel: "Deskripsi",
         desc: "Aplikasi manajemen kehadiran untuk efisiensi instansi atau sekolah.",
         goalTitle: "Tujuan / Motivasi",
