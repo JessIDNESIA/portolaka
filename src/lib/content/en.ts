@@ -158,7 +158,7 @@ export const en = {
     challenges: {
         title: "Challenges & Learning",
         challengeTitle: "Biggest Challenge",
-        challengeBody: "Becoming a web developer",
+        challengeBody: "Becoming a Full Stack Developer",
         solutionTitle: "How I Overcome It",
         solutionBody: "Finding a mentor or learning from online resources",
         strategies: [
@@ -197,7 +197,7 @@ export const en = {
         uniqueTitle: "What Makes Me Unique",
         unique1: "Never Give Up",
         unique2: "Results-Oriented",
-        unique3: "Good Management",
+        unique3: "Team Management",
         connectTitle: "Let's Connect!",
         email: "Email",
         linkedin: "LinkedIn",

@@ -158,7 +158,7 @@ export const id = {
     challenges: {
         title: "Tantangan & Pembelajaran",
         challengeTitle: "Tantangan Terbesar",
-        challengeBody: "Menjadi seorang web developer",
+        challengeBody: "Menjadi seorang Full Stack Developer",
         solutionTitle: "Cara Mengatasinya",
         solutionBody: "Mencari mentor atau belajar dari sumber-sumber online",
         strategies: [
@@ -197,7 +197,7 @@ export const id = {
         uniqueTitle: "Yang Membuat Saya Unik",
         unique1: "Never Give Up",
         unique2: "Hasil-Oriented",
-        unique3: "Good Management",
+        unique3: "Team Management",
         connectTitle: "Mari Terhubung!",
         email: "Email",
         linkedin: "LinkedIn",
