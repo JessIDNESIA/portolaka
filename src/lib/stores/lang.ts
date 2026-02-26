@@ -5,10 +5,10 @@ export type Lang = "id" | "en";
 const STORAGE_KEY = "portolaka-lang";
 
 function getStoredLang(): Lang {
-    if (typeof window === "undefined") return "id";
+    if (typeof window === "undefined") return "en";
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored === "en" || stored === "id") return stored;
-    return "id";
+    return "en";
 }
 
 function createLangStore() {
