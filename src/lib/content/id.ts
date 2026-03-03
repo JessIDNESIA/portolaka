@@ -22,7 +22,6 @@ export const id = {
         badge: "IDN Boarding School · Software Engineer",
         greeting: "Halo, saya",
         nameLine1: "Jose Shabra",
-        nameLine2: "Shatilla Rajjawani",
         chip1: "Full Stack Developer",
         chip2: "Web Engineer",
         bio: "Membangun pengalaman web yang **bersih**, **responsif**, dan **modern** — mendorong UMKM tumbuh secara daring.",

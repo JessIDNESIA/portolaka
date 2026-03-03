@@ -28,7 +28,6 @@
             <h1 class="name anim d3">
                 {t.nameLine1}
                 <br />
-                <span class="name-highlight">{t.nameLine2}</span>
             </h1>
 
             <div class="chips anim d4">
@@ -98,7 +97,7 @@
                 <div class="circle-frame">
                     <img
                         src="Jose Shabra.png"
-                        alt="Jose Shabra Shatilla Rajjawani"
+                        alt="Jose Shabra"
                         class="photo"
                     />
                 </div>

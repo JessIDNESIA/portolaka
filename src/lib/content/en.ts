@@ -22,7 +22,6 @@ export const en = {
         badge: "IDN Boarding School · Software Engineer",
         greeting: "Hello, I'm",
         nameLine1: "Jose Shabra",
-        nameLine2: "Shatilla Rajjawani",
         chip1: "Full Stack Developer",
         chip2: "Web Engineer",
         bio: "Building **clean**, **responsive**, and **modern** web experiences — empowering local businesses to grow online.",
