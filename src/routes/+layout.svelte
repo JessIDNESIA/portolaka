@@ -1,7 +1,7 @@
 <script lang="ts">
     import "../app.css";
     import "aos/dist/aos.css";
-    import Navbar from "$lib/components/Navbar.svelte";
+    import Sidebar from "$lib/components/Sidebar.svelte";
     import { onMount } from "svelte";
 
     onMount(() => {
@@ -15,7 +15,13 @@
     });
 </script>
 
-<Navbar />
-<div class="main-content">
+<svelte:head>
+    <script
+        src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js"
+    ></script>
+</svelte:head>
+
+<Sidebar />
+<div class="md:pl-64 min-h-screen transition-all duration-500">
     <slot />
 </div>

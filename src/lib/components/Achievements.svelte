@@ -1,195 +1,317 @@
 <script lang="ts">
     import { lang } from "$lib/stores/lang";
     import { content } from "$lib/content";
+    import { onMount } from "svelte";
     $: t = content[$lang].achievements;
+
+    let mounted = false;
+    onMount(() => {
+        mounted = true;
+    });
+
+    const certifications = [
+        { title: "Basic of AI", provider: "Dicoding", icon: "psychology" },
+        {
+            title: "Learning to Use Generative AI",
+            provider: "Dicoding",
+            icon: "auto_awesome",
+        },
+        {
+            title: "Generative AI for Educators",
+            provider: "Google",
+            icon: "school",
+        },
+        {
+            title: "Coding Foundations",
+            provider: "Sololearn",
+            icon: "terminal",
+        },
+        { title: "Introduction to HTML", provider: "Sololearn", icon: "html" },
+    ];
+
+    const workshops = [
+        {
+            title: "Flutter Development",
+            provider: "GDG (Google Developer Groups)",
+            icon: "devices",
+        },
+    ];
+
+    const onlineCourses = [
+        {
+            title: "Fullstack Next JS: Realtime Point Of Sale",
+            provider: "wpucourse.id",
+            icon: "javascript",
+            premium: true,
+        },
+    ];
 </script>
-<section id="achievements" class="section-container">
-    <div class="section-content">
-        <h2 class="section-title">{t.title}</h2>
 
-        <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <!-- Competitions -->
-            <div class="card overflow-hidden">
-                <div class="p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div
-                            class="bg-yellow-100 p-3 rounded-lg text-yellow-600"
-                        >
-                            <i class="fa-solid fa-trophy text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-slate-800">
-                            {t.competitions}
-                        </h3>
-                    </div>
-                    <ul class="space-y-3">
-                        <li class="border-l-4 border-yellow-400 pl-4 py-2">
-                            <p class="text-slate-500 italic">{t.comingSoon}</p>
-                            <p class="text-sm text-slate-400">
-                                {t.comingSoonDesc}
-                            </p>
-                        </li>
-                    </ul>
-                </div>
+<section
+    id="achievements"
+    class="section-container-custom overflow-hidden relative"
+>
+    <!-- Decorative background glow -->
+    <div
+        class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"
+    ></div>
+    <div
+        class="absolute top-1/2 -left-40 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none"
+    ></div>
+
+    <div class="max-w-7xl mx-auto space-y-24 relative z-10">
+        <!-- Hero Title -->
+        <header
+            class="flex flex-col items-center text-center space-y-8 max-w-6xl mx-auto mb-24 px-6"
+        >
+            <h2
+                class="font-headline text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.75]"
+                class:animate-slide-up={mounted}
+            >
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-br from-[#ff9159] to-[#ff7a2f]"
+                >
+                    {t.title.split(" ")[0]}
+                </span>
+                <span class="text-white">
+                    {t.title.split(" ").slice(1).join(" ")}
+                </span>
+            </h2>
+        </header>
+
+        <!-- Certifications -->
+        <div class="space-y-12">
+            <div class="flex items-center gap-6">
+                <h3
+                    class="text-2xl font-bold text-primary italic uppercase tracking-wider"
+                >
+                    {t.certifications}
+                </h3>
+                <div class="flex-grow h-[1px] bg-white/5"></div>
+                <span class="text-[10px] font-mono opacity-30 tracking-[0.3em]"
+                    >01 / 04</span
+                >
             </div>
 
-            <!-- Certifications -->
-            <div class="card overflow-hidden group">
-                <div class="p-6 pb-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
-                            <i class="fa-solid fa-certificate text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-slate-800">
-                            {t.certifications}
-                        </h3>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="border-l-4 border-blue-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                Basic of AI
-                            </p>
-                            <p class="text-sm text-slate-600">Dicoding</p>
-                        </li>
-                        <li class="border-l-4 border-blue-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                Learning to Use Generative AI
-                            </p>
-                            <p class="text-sm text-slate-600">Dicoding</p>
-                        </li>
-                        <li class="border-l-4 border-blue-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                Generative Al for Educators with Gemini
-                                Certificate
-                            </p>
-                            <p class="text-sm text-slate-600">Google</p>
-                        </li>
-
-                        <li class="border-l-4 border-blue-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                Coding Foundations
-                            </p>
-                            <p class="text-sm text-slate-600">
-                                Sololearn - 2024
-                            </p>
-                        </li>
-                        <li class="border-l-4 border-blue-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                Introduction to HTML
-                            </p>
-                            <p class="text-sm text-slate-600">
-                                Sololearn - 2024
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="px-6 mb-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {#each certifications as cert}
                     <div
-                        class="relative rounded-lg overflow-hidden border border-slate-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]"
-                    >
-                        <img
-                            src="/achievements/sololearn_profile.png"
-                            alt="Sololearn Certificates"
-                            class="w-full h-32 object-cover"
-                        />
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"
-                        ></div>
-                        <a
-                            href="https://www.sololearn.com/en/profile/32539778"
-                            target="_blank"
-                            class="absolute bottom-2 right-2 bg-white/90 text-blue-600 text-xs px-2 py-1 rounded shadow-sm hover:bg-white transition-colors"
-                        >
-                            <i class="fa-solid fa-up-right-from-square mr-1"
-                            ></i> {t.verify}
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Workshops -->
-            <div class="card overflow-hidden">
-                <div class="p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="bg-green-100 p-3 rounded-lg text-green-600">
-                            <i class="fa-solid fa-graduation-cap text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-slate-800">
-                            {t.workshops}
-                        </h3>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="border-l-4 border-green-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                Flutter Development
-                            </p>
-                            <p class="text-sm text-slate-600">
-                                GDG (Google Developer Group)
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="px-6 mb-6">
-                    <div
-                        class="bg-slate-50 border border-dashed border-slate-200 rounded-lg p-4 text-center"
+                        class="glass-card p-8 rounded-2xl relative overflow-hidden group"
                     >
                         <div
-                            class="flex flex-col items-center gap-2 text-slate-400"
+                            class="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
                         >
-                            <i class="fa-solid fa-images text-2xl"></i>
-                            <span class="text-xs"
-                                >{t.docInProgress}</span
+                            <span class="material-symbols-outlined text-9xl"
+                                >workspace_premium</span
                             >
                         </div>
+
+                        <span
+                            class="material-symbols-outlined text-primary mb-6 block text-4xl"
+                        >
+                            {cert.icon}
+                        </span>
+
+                        <h4
+                            class="text-xl font-bold text-white mb-2 leading-tight"
+                        >
+                            {cert.title}
+                        </h4>
+                        <p
+                            class="text-xs text-on-surface-variant font-bold uppercase tracking-widest"
+                        >
+                            {cert.provider}
+                        </p>
+
+                        <button class="view-more-btn">
+                            {t.viewMore}
+                            <span class="material-symbols-outlined text-base"
+                                >arrow_forward_ios</span
+                            >
+                        </button>
                     </div>
-                </div>
+                {/each}
+            </div>
+        </div>
+
+        <!-- Workshops -->
+        <div class="space-y-12">
+            <div class="flex items-center gap-6">
+                <h3
+                    class="text-2xl font-bold text-primary italic uppercase tracking-wider"
+                >
+                    {t.workshops}
+                </h3>
+                <div class="flex-grow h-[1px] bg-white/5"></div>
+                <span class="text-[10px] font-mono opacity-30 tracking-[0.3em]"
+                    >02 / 04</span
+                >
             </div>
 
-            <!-- Online Courses -->
-            <div class="card overflow-hidden group">
-                <div class="p-6 pb-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div
-                            class="bg-purple-100 p-3 rounded-lg text-purple-600"
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {#each workshops as workshop}
+                    <div class="glass-card p-8 rounded-2xl group">
+                        <span
+                            class="material-symbols-outlined text-primary mb-6 block text-4xl"
                         >
-                            <i class="fa-solid fa-laptop-code text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold text-slate-800">
-                            {t.onlineCourses}
-                        </h3>
+                            {workshop.icon}
+                        </span>
+                        <h4
+                            class="text-xl font-bold text-white mb-2 leading-tight"
+                        >
+                            {workshop.title}
+                        </h4>
+                        <p
+                            class="text-xs text-on-surface-variant font-bold uppercase tracking-widest"
+                        >
+                            {workshop.provider}
+                        </p>
+                        <button class="view-more-btn">
+                            {t.viewMore}
+                            <span class="material-symbols-outlined text-base"
+                                >arrow_forward_ios</span
+                            >
+                        </button>
                     </div>
-                    <ul class="space-y-4">
-                        <li class="border-l-4 border-purple-400 pl-4 py-2">
-                            <p class="font-semibold text-slate-800">
-                                Fullstack Next JS: Realtime Point Of Sale
-                            </p>
-                            <p class="text-sm text-slate-600">
-                                wpucourse.id - 2024
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="px-6 mb-4">
+                {/each}
+            </div>
+        </div>
+
+        <!-- Online Courses -->
+        <div class="space-y-12">
+            <div class="flex items-center gap-6">
+                <h3
+                    class="text-2xl font-bold text-primary italic uppercase tracking-wider"
+                >
+                    {t.onlineCourses}
+                </h3>
+                <div class="flex-grow h-[1px] bg-white/5"></div>
+                <span class="text-[10px] font-mono opacity-30 tracking-[0.3em]"
+                    >03 / 04</span
+                >
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {#each onlineCourses as course}
+                    <div class="glass-card p-8 rounded-2xl relative group">
+                        {#if course.premium}
+                            <div
+                                class="absolute top-4 right-4 text-[10px] font-bold text-primary bg-primary/10 px-2 py-1 rounded-full uppercase tracking-tighter border border-primary/20"
+                            >
+                                Premium
+                            </div>
+                        {/if}
+                        <span
+                            class="material-symbols-outlined text-primary mb-6 block text-4xl"
+                        >
+                            {course.icon}
+                        </span>
+                        <h4
+                            class="text-xl font-bold text-white mb-2 leading-tight"
+                        >
+                            {course.title}
+                        </h4>
+                        <p
+                            class="text-xs text-on-surface-variant font-bold uppercase tracking-widest"
+                        >
+                            {course.provider}
+                        </p>
+                        <button class="view-more-btn">
+                            {t.viewMore}
+                            <span class="material-symbols-outlined text-base"
+                                >arrow_forward_ios</span
+                            >
+                        </button>
+                    </div>
+                {/each}
+            </div>
+        </div>
+
+        <!-- Competitions -->
+        <div class="space-y-12">
+            <div class="flex items-center gap-6">
+                <h3
+                    class="text-2xl font-bold text-primary italic uppercase tracking-wider"
+                >
+                    {t.competitions}
+                </h3>
+                <div class="flex-grow h-[1px] bg-white/5"></div>
+                <span class="text-[10px] font-mono opacity-30 tracking-[0.3em]"
+                    >04 / 04</span
+                >
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="glass-card p-8 rounded-2xl border-dashed border-primary/20 bg-transparent flex flex-col justify-center items-center text-center group cursor-default"
+                >
                     <div
-                        class="relative rounded-lg overflow-hidden border border-slate-100 shadow-sm transition-transform duration-300 group-hover:scale-[1.02]"
+                        class="w-16 h-16 rounded-full bg-primary/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500"
                     >
-                        <img
-                            src="/achievements/wpucourse_nextjs_pos.png"
-                            alt="WPU Course NextJS POS"
-                            class="w-full h-32 object-cover"
-                        />
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"
-                        ></div>
-                        <a
-                            href="https://wpucourse.id"
-                            target="_blank"
-                            class="absolute bottom-2 right-2 bg-white/90 text-purple-600 text-xs px-2 py-1 rounded shadow-sm hover:bg-white transition-colors"
+                        <span
+                            class="material-symbols-outlined text-primary text-4xl"
+                            style="font-variation-settings: 'FILL' 1;"
+                            >trophy</span
                         >
-                            <i class="fa-solid fa-link mr-1"></i> {t.courseLink}
-                        </a>
                     </div>
+                    <h4 class="text-xl font-bold text-white mb-2">
+                        {t.comingSoon}
+                    </h4>
+                    <p class="text-sm text-on-surface-variant max-w-[200px]">
+                        {t.comingSoonDesc}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .glass-card {
+        background: rgba(38, 38, 38, 0.4);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+        background: rgba(45, 45, 45, 0.6);
+        border-color: rgba(255, 145, 89, 0.3);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(255, 145, 89, 0.1);
+    }
+    .kinetic-text {
+        text-shadow: 0 0 30px rgba(255, 145, 89, 0.3);
+    }
+    .view-more-btn {
+        @apply mt-6 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 hover:text-primary transition-colors duration-300;
+    }
+    .section-container-custom {
+        @apply min-h-screen pt-24 pb-32 px-6 lg:pr-12;
+    }
+    .animate-fade-in {
+        animation: fadeIn 1s ease-out forwards;
+    }
+    .animate-slide-up {
+        animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

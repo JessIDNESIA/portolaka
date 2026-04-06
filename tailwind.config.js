@@ -4,23 +4,93 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: {
-                    50: '#f0f9ff',
-                    100: '#e0f2fe',
-                    200: '#bae6fd',
-                    300: '#7dd3fc',
-                    400: '#38bdf8',
-                    500: '#0ea5e9',
-                    600: '#0284c7',
-                    700: '#0369a1',
-                    800: '#075985',
-                    900: '#0c4a6e',
-                }
+                "background": "#0e0e0e",
+                "surface-container-highest": "#262626",
+                "on-secondary-container": "#fff6f0",
+                "tertiary-fixed-dim": "#eba60f",
+                "primary": {
+                    DEFAULT: "#ff6b00",
+                    50: "#fff7ed",
+                    100: "#ffedd5",
+                    400: "#ff8c00",
+                    500: "#ff6b00",
+                    600: "#e65100",
+                    700: "#bf360c"
+                },
+                "on-primary": "#ffffff",
+                "secondary-container": "#845400",
+                "primary-dim": "#ff7524",
+                "inverse-surface": "#fcf8f8",
+                "secondary-fixed": "#ffc882",
+                "inverse-on-surface": "#565554",
+                "surface-container-low": "#131313",
+                "on-primary-fixed-variant": "#4f1c00",
+                "primary-fixed": "#ff7a2f",
+                "outline-variant": "#494847",
+                "surface-tint": "#ff9159",
+                "error": "#ff7351",
+                "on-tertiary-container": "#523700",
+                "on-tertiary-fixed-variant": "#5e4000",
+                "on-error-container": "#ffd2c8",
+                "secondary-fixed-dim": "#ffb54e",
+                "error-dim": "#d53d18",
+                "error-container": "#b92902",
+                "on-secondary-fixed-variant": "#714800",
+                "on-background": "#ffffff",
+                "on-surface-variant": "#adaaaa",
+                "surface-container-high": "#201f1f",
+                "secondary-dim": "#eea439",
+                "surface-variant": "#262626",
+                "surface-bright": "#2c2c2c",
+                "on-primary-fixed": "#000000",
+                "surface-container": "#1a1919",
+                "on-surface": "#ffffff",
+                "primary-container": "#ff7a2f",
+                "on-tertiary": "#5e4000",
+                "tertiary-dim": "#eba60f",
+                "tertiary-fixed": "#fbb423",
+                "secondary": "#feb246",
+                "on-error": "#450900",
+                "inverse-primary": "#a14100",
+                "tertiary": "#ffc562",
+                "on-secondary": "#563500",
+                "surface-container-lowest": "#000000",
+                "on-tertiary-fixed": "#372400",
+                "on-primary-container": "#401500",
+                "tertiary-container": "#fbb423",
+                "outline": "#777575",
+                "primary-fixed-dim": "#f66700",
+                "surface-dim": "#0e0e0e",
+                "on-secondary-fixed": "#4b2e00",
+                "surface": "#0e0e0e"
             },
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
-            }
-        }
+                "headline": ["Epilogue", "sans-serif"],
+                "body": ["Manrope", "sans-serif"],
+                "label": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+            keyframes: {
+                float: {
+                    "0%, 100%": { transform: "translateY(0)" },
+                    "50%": { transform: "translateY(-20px)" },
+                },
+                gradient: {
+                    "0%, 100%": { "background-position": "0% 50%" },
+                    "50%": { "background-position": "100% 50%" },
+                },
+                "pulse-soft": {
+                    "0%, 100%": { opacity: 0.3, transform: "scale(1)" },
+                    "50%": { opacity: 0.6, transform: "scale(1.1)" },
+                }
+            },
+            animation: {
+                float: "float 6s ease-in-out infinite",
+                "spin-slow": "spin 12s linear infinite",
+                "gradient-move": "gradient 15s ease infinite",
+                "pulse-soft": "pulse-soft 4s ease-in-out infinite",
+            },
+        },
     },
     plugins: []
 };

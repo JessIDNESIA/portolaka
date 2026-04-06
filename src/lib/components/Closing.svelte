@@ -12,11 +12,22 @@
     <div class="section-content text-center">
         <div class="max-w-4xl mx-auto space-y-8">
             <!-- Summary -->
-            <div class="mb-8">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-slate-900">
-                    {t.title}
+            <div class="mb-20">
+                <h2
+                    class="font-headline text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.75] mb-8"
+                >
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-br from-[#ff9159] to-[#ff7a2f]"
+                    >
+                        {t.title.split(" ")[0]}
+                    </span>
+                    <span class="text-white">
+                        {t.title.split(" ").slice(1).join(" ")}
+                    </span>
                 </h2>
-                <p class="text-xl md:text-2xl leading-relaxed text-slate-600">
+                <p
+                    class="font-body text-xl md:text-2xl leading-relaxed text-white/50 max-w-2xl mx-auto"
+                >
                     {t.subtitle}
                 </p>
             </div>
@@ -48,9 +59,13 @@
             <div
                 class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-200 shadow-lg"
             >
-                <h3 class="text-2xl font-semibold mb-6 text-slate-800">{t.connectTitle}</h3>
+                <h3 class="text-2xl font-semibold mb-6 text-slate-800">
+                    {t.connectTitle}
+                </h3>
                 <div class="space-y-4">
-                    <div class="flex items-center justify-center gap-3 text-lg text-slate-700">
+                    <div
+                        class="flex items-center justify-center gap-3 text-lg text-slate-700"
+                    >
                         <span>📧</span>
                         <span class="font-medium">{t.email}:</span>
                         <a
@@ -60,7 +75,9 @@
                             joseidnn1@gmail.com
                         </a>
                     </div>
-                    <div class="flex items-center justify-center gap-3 text-lg text-slate-700">
+                    <div
+                        class="flex items-center justify-center gap-3 text-lg text-slate-700"
+                    >
                         <span>💼</span>
                         <span class="font-medium">{t.linkedin}:</span>
                         <a
@@ -71,12 +88,18 @@
                             www.linkedin.com/in/jose-shabra-l1nk3d1n/
                         </a>
                     </div>
-                    <div class="flex items-center justify-center gap-3 text-lg text-slate-700">
+                    <div
+                        class="flex items-center justify-center gap-3 text-lg text-slate-700"
+                    >
                         <span>📱</span>
                         <span class="font-medium">{t.phone}:</span>
-                        <span class="text-primary-600 font-medium">+62 822-4551-7041</span>
+                        <span class="text-primary-600 font-medium"
+                            >+62 822-4551-7041</span
+                        >
                     </div>
-                    <div class="flex items-center justify-center gap-3 text-lg text-slate-700">
+                    <div
+                        class="flex items-center justify-center gap-3 text-lg text-slate-700"
+                    >
                         <span>🌐</span>
                         <span class="font-medium">{t.github}:</span>
                         <a

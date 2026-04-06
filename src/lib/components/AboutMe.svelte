@@ -1,7 +1,15 @@
-<script>
+<script lang="ts">
     import { onMount } from "svelte";
     import { lang } from "$lib/stores/lang";
     import { content } from "$lib/content";
+    import {
+        BookOpen,
+        ShieldCheck,
+        Cpu,
+        Rocket,
+        Sparkles,
+        Hexagon,
+    } from "lucide-svelte";
 
     let visible = false;
     $: t = content[$lang].about;
@@ -15,168 +23,272 @@
         );
         const section = document.getElementById("about");
         if (section) observer.observe(section);
-        return () => observer.disconnect();
+
+        // Simple parallax effect for shards
+        const handleMouseMove = (e: MouseEvent) => {
+            const x = (window.innerWidth / 2 - e.pageX) / 45;
+            const y = (window.innerHeight / 2 - e.pageY) / 45;
+
+            const shards = document.querySelectorAll(".shard");
+            shards.forEach((shard, index) => {
+                const element = shard as HTMLElement;
+                const factor = (index + 1) * 10;
+                element.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+        };
+
+        window.addEventListener("mousemove", handleMouseMove);
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("mousemove", handleMouseMove);
+        };
     });
 </script>
 
-<section id="about" class="about-section w-full">
-    <!-- BG decorative — same as Opening -->
-    <div class="bg-grid"></div>
-    <div class="bg-glow-tr"></div>
-    <div class="bg-glow-bl"></div>
+<section
+    id="about"
+    class="relative min-h-screen bg-[#0e0e0e] text-white font-body selection:bg-primary/30 py-32 md:py-48 px-6 md:px-12 lg:px-24 overflow-hidden overflow-y-auto"
+>
+    <!-- Decorative Floating Elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div
+            class="shard absolute w-32 h-32 top-[15%] left-[5%] opacity-20 animate-spin-slow bg-gradient-to-br from-primary/20 to-transparent blur-sm"
+            style="clip-path: polygon(50% 0%, 100% 100%, 0% 80%);"
+        ></div>
+        <div
+            class="shard absolute w-48 h-48 top-[60%] right-[10%] opacity-10 animate-pulse-soft bg-gradient-to-br from-orange-900/40 to-transparent blur-md"
+            style="clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);"
+        ></div>
+        <div
+            class="absolute top-[20%] left-[20%] w-[400px] h-[400px] bg-primary/5 rounded-full blur-[120px] animate-pulse-soft"
+        ></div>
+        <div
+            class="absolute bottom-[10%] right-[15%] w-[300px] h-[300px] bg-orange-900/10 rounded-full blur-[100px] animate-pulse-soft"
+            style="animation-delay: 2s;"
+        ></div>
+        <div class="grid-pattern absolute inset-0 opacity-20"></div>
+    </div>
 
-    <div class="content-wrapper" class:visible>
-        <!-- ── Section Header ── -->
-        <div class="section-header anim d1">
-            <span class="section-tag">
-                <span class="tag-dot"></span>
-                {t.tag}
-            </span>
-            <h2 class="section-title">{t.title}</h2>
-            <p class="section-subtitle">
+    <div
+        class="relative z-10 max-w-7xl mx-auto w-full transition-all duration-1000"
+        class:opacity-0={!visible}
+        class:opacity-100={visible}
+    >
+        <!-- Section Header -->
+        <header
+            class="flex flex-col items-center text-center space-y-8 mb-24 px-6"
+        >
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_15px_rgba(255,107,0,0.8)]"
+                ></div>
+                <span
+                    class="font-label text-primary uppercase tracking-[0.5em] text-[10px] font-extrabold"
+                    >{t.tag}</span
+                >
+            </div>
+
+            <h2
+                class="font-headline text-6xl md:text-8xl lg:text-9xl font-black tracking-tight leading-[0.75] max-w-4xl"
+            >
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-br from-[#ff9159] to-[#ff7a2f]"
+                >
+                    {t.title.split(" ")[0]}
+                </span>
+                <span class="text-white">
+                    {t.title.split(" ").slice(1).join(" ")}
+                </span>
+            </h2>
+            <p
+                class="font-body text-white/50 text-xl md:text-2xl max-w-2xl leading-relaxed"
+            >
                 {t.subtitle}
             </p>
-        </div>
+        </header>
 
-        <!-- ── Main Grid ── -->
-        <div class="about-grid">
-            <!-- ① Background — full width, prominent -->
-            <div class="card card-wide anim d2">
-                <div class="card-icon-wrap">
-                    <svg
-                        width="20"
-                        height="20"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <!-- Background Card -->
+            <div
+                class="md:col-span-8 glass-card rounded-2xl p-8 md:p-14 group border border-white/5 hover:border-primary/30 transition-all duration-500"
+            >
+                <div class="flex items-center gap-5 mb-12">
+                    <div
+                        class="p-3 bg-primary/10 rounded-xl border border-primary/20 text-primary transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.8"
-                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                    </svg>
+                        <BookOpen size={28} />
+                    </div>
+                    <h3
+                        class="font-headline font-bold text-3xl uppercase tracking-tight text-white"
+                    >
+                        {t.backgroundTitle}
+                    </h3>
                 </div>
-                <h3 class="card-title">{t.backgroundTitle}</h3>
-                <p class="card-body">
-                    {@html t.backgroundBody.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
-                </p>
-            </div>
 
-            <!-- ② Personal Strengths -->
-            <div class="card anim d3">
-                <div class="card-icon-wrap">
-                    <svg
-                        width="20"
-                        height="20"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                <div class="flex flex-col md:flex-row gap-12 items-start">
+                    <div
+                        class="w-full md:w-2/5 aspect-[4/5] rounded-xl overflow-hidden border border-white/10 group-hover:border-primary/40 shadow-2xl transition-all duration-700"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.8"
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                        />
-                    </svg>
-                </div>
-                <h3 class="card-title">{t.strengthsTitle}</h3>
-                <ul class="strength-list">
-                    {#each t.strengths as item}
-                        <li class="strength-item">
-                            <span class="strength-check">
-                                <svg
-                                    width="12"
-                                    height="12"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                        <!-- Dark theme structure image placeholder -->
+                        <div
+                            class="w-full h-full bg-[#0a0a0a] flex items-center justify-center p-4 relative"
+                        >
+                            <img
+                                src="Jose Shabra.jpg"
+                                alt="Profile"
+                                class="w-full h-full object-cover grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
+                            />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent pointer-events-none"
+                            ></div>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-3/5 space-y-10 text-justify">
+                        <p
+                            class="font-body text-xl md:text-2xl text-white/80 leading-relaxed font-light"
+                        >
+                            {@html t.backgroundBody.replace(
+                                /\*\*(.*?)\*\*/g,
+                                '<span class="text-white font-bold border-b-2 border-primary/40">$1</span>',
+                            )}
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <div
+                                class="bg-white/5 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 group-hover:bg-primary/5 group-hover:border-primary/30 transition-all duration-300"
+                            >
+                                <span
+                                    class="font-label text-[11px] text-primary uppercase tracking-widest font-bold"
+                                    >Software Engineering</span
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="3"
-                                        d="M5 13l4 4L19 7"
-                                    />
-                                </svg>
-                            </span>
-                            <div>
-                                <span class="strength-label">{item.label}</span>
-                                <span class="strength-desc">{item.desc}</span>
                             </div>
-                        </li>
-                    {/each}
-                </ul>
-            </div>
-
-            <!-- ③ Soft Skills -->
-            <div class="card anim d4">
-                <div class="card-icon-wrap">
-                    <svg
-                        width="20"
-                        height="20"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.8"
-                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                    </svg>
-                </div>
-                <h3 class="card-title">{t.softSkillsTitle}</h3>
-                <div class="skill-tags">
-                    {#each t.tags as tag}
-                        <span class="skill-tag tag-accent">{tag}</span>
-                    {/each}
+                            <div
+                                class="bg-white/5 backdrop-blur-md px-6 py-3 rounded-xl border border-white/10 group-hover:bg-primary/5 group-hover:border-primary/30 transition-all duration-300"
+                            >
+                                <span
+                                    class="font-label text-[11px] text-primary uppercase tracking-widest font-bold"
+                                    >Full Stack Developer</span
+                                >
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- ④ Career Interest -->
-            <div class="card anim d5">
-                <div class="card-icon-wrap">
-                    <svg
-                        width="20"
-                        height="20"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+            <!-- Strengths Card -->
+            <div
+                class="md:col-span-4 glass-card rounded-2xl p-8 group border border-white/5 hover:border-primary/30 transition-all duration-500 bg-white/[0.02]"
+            >
+                <div class="flex items-center gap-4 mb-12">
+                    <div
+                        class="p-3 bg-primary/10 rounded-xl border border-primary/20 text-primary transition-transform duration-500 group-hover:scale-110"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.8"
-                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                    </svg>
+                        <ShieldCheck size={26} />
+                    </div>
+                    <h3
+                        class="font-headline font-bold text-2xl uppercase tracking-tight text-white"
+                    >
+                        {t.strengthsTitle}
+                    </h3>
                 </div>
-                <h3 class="card-title">{t.careerTitle}</h3>
-                <p class="card-body">
-                    {@html t.careerBody.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")}
-                </p>
 
-                <!-- Mini mission line -->
-                <div class="career-cta">
-                    <svg
-                        width="14"
-                        height="14"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
+                <div class="space-y-10">
+                    {#each t.strengths as item}
+                        <div class="flex gap-5 group/item cursor-default">
+                            <div
+                                class="text-white/20 transition-all duration-500 group-hover/item:text-primary group-hover/item:scale-125 pt-1"
+                            >
+                                <Sparkles size={18} />
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-label text-[12px] uppercase font-extrabold text-white mb-2 tracking-[0.2em]"
+                                >
+                                    {item.label}
+                                </h4>
+                                <p
+                                    class="font-body text-sm text-white/40 leading-relaxed font-medium"
+                                >
+                                    {item.desc}
+                                </p>
+                            </div>
+                        </div>
+                    {/each}
+                </div>
+            </div>
+
+            <!-- Soft Skills Card -->
+            <div
+                class="md:col-span-6 glass-card rounded-2xl p-8 group border border-white/5 hover:border-primary/30 transition-all duration-500"
+            >
+                <div class="flex items-center gap-4 mb-10">
+                    <div
+                        class="p-3 bg-primary/10 rounded-xl border border-primary/20 text-primary transition-transform duration-500 group-hover:scale-110"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M13 10V3L4 14h7v7l9-11h-7z"
-                        />
-                    </svg>
-                    {t.careerCta}
+                        <Hexagon size={24} />
+                    </div>
+                    <h3
+                        class="font-headline font-bold text-2xl uppercase tracking-tight text-white"
+                    >
+                        {t.softSkillsTitle}
+                    </h3>
+                </div>
+
+                <div class="flex flex-wrap gap-3">
+                    {#each t.tags as tag, i}
+                        <span
+                            class="px-5 py-3 bg-white/5 border border-white/10 rounded-xl font-label text-[10px] text-white/70 uppercase tracking-widest hover:border-primary/50 hover:text-white hover:bg-primary/5 transition-all cursor-default"
+                            style="--delay: {i * 0.1}"
+                        >
+                            {tag}
+                        </span>
+                    {/each}
+                </div>
+            </div>
+
+            <!-- Career Interest Card -->
+            <div
+                class="md:col-span-6 glass-card rounded-2xl p-8 group flex flex-col justify-between border border-white/5 hover:border-primary/30 transition-all duration-500"
+            >
+                <div>
+                    <div class="flex items-center gap-4 mb-10">
+                        <div
+                            class="p-3 bg-primary/10 rounded-xl border border-primary/20 text-primary transition-transform duration-500 group-hover:scale-110"
+                        >
+                            <Rocket size={24} />
+                        </div>
+                        <h3
+                            class="font-headline font-bold text-2xl uppercase tracking-tight text-white"
+                        >
+                            {t.careerTitle}
+                        </h3>
+                    </div>
+                    <p
+                        class="font-body text-white/60 text-xl mb-12 leading-relaxed font-light"
+                    >
+                        {@html t.careerBody.replace(
+                            /\*\*(.*?)\*\*/g,
+                            '<span class="text-white font-bold">$1</span>',
+                        )}
+                    </p>
+                </div>
+
+                <div class="pt-8 border-t border-white/5 space-y-6">
+                    <div
+                        class="p-6 rounded-2xl bg-gradient-to-br from-white/5 to-transparent border border-white/5 relative group-hover:border-primary/20 group-hover:bg-primary/5 transition-all"
+                    >
+                        <div
+                            class="absolute -top-3 left-6 px-3 py-0.5 bg-[#0e0e0e] font-label text-[8px] text-primary uppercase tracking-[0.3em] font-black border border-primary/20 rounded-full"
+                        >
+                            Core Mission
+                        </div>
+                        <p
+                            class="font-body text-md text-white/80 italic leading-relaxed"
+                        >
+                            "{t.careerCta}"
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -184,371 +296,22 @@
 </section>
 
 <style>
-    /* ── Design tokens — same as Opening.svelte ── */
-    :root {
-        --bg-deep: #030c1a;
-        --bg-card: #071426;
-        --accent: #38bdf8;
-        --accent2: #818cf8;
-        --text: #eef4ff;
-        --muted: rgba(238, 244, 255, 0.48);
-        --glass: rgba(255, 255, 255, 0.04);
-        --border: rgba(255, 255, 255, 0.09);
+    .glass-card {
+        background: rgba(26, 26, 26, 0.4);
+        backdrop-filter: blur(16px) saturate(180%);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
-    /* ── Section shell ── */
-    .about-section {
-        min-height: 100vh;
-        width: 100%;
-        background: var(--bg-deep);
-        position: relative;
-        display: flex;
-        align-items: center;
-        font-family: var(--font-b);
-        padding: 80px 0 96px;
-    }
-
-    /* ── BG Layers — mirrored from Opening for continuity ── */
-    .bg-grid {
-        position: absolute;
-        inset: 0;
+    .grid-pattern {
         background-image: linear-gradient(
-                rgba(56, 189, 248, 0.03) 1px,
+                rgba(255, 255, 255, 0.03) 1px,
                 transparent 1px
             ),
             linear-gradient(
                 90deg,
-                rgba(56, 189, 248, 0.03) 1px,
+                rgba(255, 255, 255, 0.03) 1px,
                 transparent 1px
             );
-        background-size: 56px 56px;
-        mask-image: radial-gradient(
-            ellipse 90% 90% at 50% 50%,
-            black 20%,
-            transparent 100%
-        );
-        -webkit-mask-image: radial-gradient(
-            ellipse 90% 90% at 50% 50%,
-            black 20%,
-            transparent 100%
-        );
-        pointer-events: none;
-    }
-    .bg-glow-tr {
-        position: absolute;
-        top: -5%;
-        right: -2%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(
-            circle,
-            rgba(56, 189, 248, 0.09) 0%,
-            transparent 70%
-        );
-        pointer-events: none;
-    }
-    .bg-glow-bl {
-        position: absolute;
-        bottom: -5%;
-        left: -4%;
-        width: 440px;
-        height: 440px;
-        background: radial-gradient(
-            circle,
-            rgba(129, 140, 248, 0.11) 0%,
-            transparent 70%
-        );
-        pointer-events: none;
-    }
-
-    /* ── Content wrapper ── */
-    .content-wrapper {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        max-width: 1160px;
-        margin: 0 auto;
-        padding: 0 48px;
-        display: flex;
-        flex-direction: column;
-        gap: 48px;
-    }
-
-    /* ── Entrance animations — same stagger system as Opening ── */
-    .anim {
-        opacity: 0;
-        transform: translateY(24px);
-        transition:
-            opacity 0.65s ease,
-            transform 0.65s ease;
-    }
-    .content-wrapper.visible .anim.d1 {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0.1s;
-    }
-    .content-wrapper.visible .anim.d2 {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0.2s;
-    }
-    .content-wrapper.visible .anim.d3 {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0.3s;
-    }
-    .content-wrapper.visible .anim.d4 {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0.38s;
-    }
-    .content-wrapper.visible .anim.d5 {
-        opacity: 1;
-        transform: none;
-        transition-delay: 0.46s;
-    }
-
-    /* ── Section Header ── */
-    .section-header {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        max-width: 560px;
-    }
-
-    .section-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(56, 189, 248, 0.08);
-        border: 1px solid rgba(56, 189, 248, 0.22);
-        color: var(--accent);
-        font-size: 0.7rem;
-        font-weight: 500;
-        letter-spacing: 0.09em;
-        text-transform: uppercase;
-        padding: 6px 14px;
-        border-radius: 100px;
-        width: fit-content;
-    }
-    .tag-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 8px var(--accent);
-        animation: pulse-dot 2.2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-        0%,
-        100% {
-            opacity: 1;
-            transform: scale(1);
-        }
-        50% {
-            opacity: 0.5;
-            transform: scale(0.75);
-        }
-    }
-
-    /* Title — same style as Opening .name */
-    .section-title {
-        font-family: var(--font-d);
-        font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-        font-weight: 700;
-        line-height: 1.15;
-        letter-spacing: -0.01em;
-        color: var(--text);
-        margin: 0;
-    }
-    .title-accent {
-        background: linear-gradient(135deg, var(--accent) 0%, #7dd3fc 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-weight: 800;
-    }
-
-    .section-subtitle {
-        font-size: 0.98rem;
-        font-weight: 300;
-        color: var(--muted);
-        line-height: 1.75;
-        margin: 0;
-    }
-
-    /* ── Card Grid ── */
-    .about-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-
-    /* ── Card Base ── */
-    .card {
-        background: var(--glass);
-        border: 1px solid var(--border);
-        border-radius: 18px;
-        padding: 28px 28px 28px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        backdrop-filter: blur(12px);
-        transition:
-            border-color 0.25s ease,
-            transform 0.25s ease,
-            box-shadow 0.25s ease;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Subtle top-left corner accent line */
-    .card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 48px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--accent), transparent);
-        border-radius: 0 0 4px 0;
-        opacity: 0;
-        transition: opacity 0.25s ease;
-    }
-    .card:hover::before {
-        opacity: 1;
-    }
-    .card:hover {
-        border-color: rgba(56, 189, 248, 0.2);
-        transform: translateY(-3px);
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
-    }
-
-    /* Background card spans 2 columns */
-    .card-wide {
-        grid-column: 1 / -1;
-    }
-
-    /* Icon wrap */
-    .card-icon-wrap {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        background: rgba(56, 189, 248, 0.1);
-        border: 1px solid rgba(56, 189, 248, 0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--accent);
-        flex-shrink: 0;
-    }
-
-    /* Card title */
-    .card-title {
-        font-family: var(--font-d);
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--text);
-        letter-spacing: -0.01em;
-        margin: 0;
-    }
-
-    /* Card body text */
-    .card-body {
-        font-size: 0.92rem;
-        font-weight: 300;
-        color: rgba(238, 244, 255, 0.65);
-        line-height: 1.8;
-        margin: 0;
-    }
-    .card-body strong {
-        color: var(--text);
-        font-weight: 500;
-    }
-
-    /* ── Strength list ── */
-    .strength-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-        margin: 0;
-        padding: 0;
-    }
-    .strength-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-    }
-    .strength-check {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        background: rgba(56, 189, 248, 0.12);
-        border: 1px solid rgba(56, 189, 248, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--accent);
-        flex-shrink: 0;
-        margin-top: 1px;
-    }
-    .strength-label {
-        display: block;
-        font-size: 0.88rem;
-        font-weight: 500;
-        color: var(--text);
-        line-height: 1.3;
-    }
-    .strength-desc {
-        display: block;
-        font-size: 0.76rem;
-        font-weight: 300;
-        color: var(--muted);
-        margin-top: 2px;
-    }
-
-    /* ── Skill tags ── */
-    .skill-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .skill-tag {
-        font-size: 0.76rem;
-        font-weight: 500;
-        padding: 5px 14px;
-        border-radius: 100px;
-        letter-spacing: 0.02em;
-    }
-    .tag-accent {
-        background: linear-gradient(
-            135deg,
-            rgba(129, 140, 248, 0.2),
-            rgba(99, 102, 241, 0.15)
-        );
-        border: 1px solid rgba(129, 140, 248, 0.3);
-        color: #a5b4fc;
-    }
-    .tag-outline {
-        background: transparent;
-        border: 1px solid var(--border);
-        color: var(--muted);
-    }
-
-    /* ── Career CTA line ── */
-    .career-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        margin-top: 4px;
-        font-size: 0.78rem;
-        font-weight: 500;
-        color: var(--accent);
-        background: rgba(56, 189, 248, 0.07);
-        border: 1px solid rgba(56, 189, 248, 0.18);
-        border-radius: 8px;
-        padding: 8px 14px;
-        width: fit-content;
+        background-size: 50px 50px;
     }
 </style>
