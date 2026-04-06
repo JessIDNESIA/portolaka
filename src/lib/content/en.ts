@@ -210,18 +210,32 @@ export const en = {
     },
 
     closing: {
-        title: "Thank You! 🙏",
-        subtitle: "I hope this presentation gives you a clear picture of my experience, skills, and career goals. I am excited to keep learning and contributing.",
-        uniqueTitle: "What Makes Me Unique",
-        unique1: "Never Give Up",
-        unique2: "Results-Oriented",
-        unique3: "Team Management",
-        connectTitle: "Let's Connect!",
+        title: "Thank You 🎉",
+        subtitle: "I am eager to contribute my skills and passion to high-impact projects and teams.",
+        uniqueTitle: "What makes me unique?",
+        takeaways: [
+            {
+                title: "Resilient Code",
+                body: "Engineered for durability and performance across every viewport and connection speed.",
+                icon: "hugeicons:workout-stretching"
+            },
+            {
+                title: "Target Focus",
+                body: "Meticulous attention to microscopic details that define the user's emotional journey.",
+                icon: "hugeicons:target-02"
+            },
+            {
+                title: "True Partnership",
+                body: "Collaborative integration that aligns business goals with innovative creative solutions.",
+                icon: "hugeicons:agreement-01"
+            }
+        ],
+        contactTitle: "Let's initiate the next phase.",
         email: "Email",
         linkedin: "LinkedIn",
         phone: "Phone",
         github: "Github",
-        cta: "I'm open to discussion, collaboration, or new opportunities!",
+        cta: "Click the icon above to contact me 👋",
         backToTop: "↑ Back to Top",
         footer: "© 2026 Jose Shabra Shatilla Rajjawani | Made with ❤️ using SvelteKit & Tailwind CSS",
     },

@@ -210,18 +210,32 @@ export const id = {
     },
 
     closing: {
-        title: "Terima Kasih! 🙏",
-        subtitle: "Saya berharap presentasi ini memberikan gambaran jelas tentang pengalaman, kemampuan, dan tujuan karier saya. Saya sangat antusias untuk terus belajar dan berkontribusi.",
-        uniqueTitle: "Yang Membuat Saya Unik",
-        unique1: "Never Give Up",
-        unique2: "Hasil-Oriented",
-        unique3: "Team Management",
-        connectTitle: "Mari Terhubung!",
+        title: "Terima Kasih 🎉",
+        subtitle: "Saya sangat antusias untuk berkontribusi dengan keahlian dan dedikasi saya pada proyek dan tim yang berdampak besar.",
+        uniqueTitle: "Apa yang membuat saya unik?",
+        takeaways: [
+            {
+                title: "Kode Resilien",
+                body: "Dirancang untuk ketahanan dan performa di setiap viewport dan kecepatan koneksi.",
+                icon: "hugeicons:workout-stretching"
+            },
+            {
+                title: "Fokus Target",
+                body: "Perhatian cermat terhadap detail mikroskopis yang menentukan perjalanan emosional pengguna.",
+                icon: "hugeicons:target-02"
+            },
+            {
+                title: "Kemitraan Sejati",
+                body: "Integrasi kolaboratif yang menyelaraskan tujuan bisnis dengan solusi kreatif yang inovatif.",
+                icon: "hugeicons:agreement-01"
+            }
+        ],
+        contactTitle: "Mari memulai fase berikutnya.",
         email: "Email",
         linkedin: "LinkedIn",
-        phone: "Phone",
+        phone: "Telepon",
         github: "Github",
-        cta: "Saya terbuka untuk diskusi, kolaborasi, atau peluang baru!",
+        cta: "Klik ikon diatas untuk menghubungi saya 👋",
         backToTop: "↑ Kembali ke Atas",
         footer: "© 2026 Jose Shabra Shatilla Rajjawani | Dibuat dengan ❤️ menggunakan SvelteKit & Tailwind CSS",
     },
