@@ -4,38 +4,66 @@
     import {
         LayoutGrid,
         User,
+        GraduationCap,
+        Zap,
         Briefcase,
+        Trophy,
+        Target,
+        TrendingUp,
         Mail,
         Languages,
         ChevronRight,
     } from "lucide-svelte";
+    import { onMount } from "svelte";
 
     $: t = content[$lang].nav;
 
     const navItems = [
-        { id: "home", label: "home", icon: LayoutGrid, href: "#" },
+        { id: "opening", label: "home", icon: LayoutGrid, href: "#opening" },
         { id: "about", label: "about", icon: User, href: "#about" },
-        {
-            id: "projects",
-            label: "portfolio",
-            icon: Briefcase,
-            href: "#project1",
-        },
+        { id: "education", label: "education", icon: GraduationCap, href: "#education" },
+        { id: "skills", label: "skills", icon: Zap, href: "#skills" },
+        { id: "projects", label: "portfolio", icon: Briefcase, href: "#projects" },
+        { id: "achievements", label: "achievements", icon: Trophy, href: "#achievements" },
+        { id: "challenges", label: "challenges", icon: Target, href: "#challenges" },
+        { id: "career", label: "career", icon: TrendingUp, href: "#career" },
         { id: "contact", label: "contact", icon: Mail, href: "#contact" },
     ];
 
-    let activeSection = "home";
+    let activeSection = "opening";
 
     function setActive(id: string) {
         activeSection = id;
     }
+
+    onMount(() => {
+        const observerOptions = {
+            root: null,
+            threshold: 0.5,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    activeSection = entry.target.id;
+                }
+            });
+        }, observerOptions);
+
+        navItems.forEach((item) => {
+            const el = document.getElementById(item.id);
+            if (el) observer.observe(el);
+        });
+
+        return () => observer.disconnect();
+    });
 </script>
 
 <aside
-    class="fixed left-0 top-0 h-screen w-20 md:w-64 bg-background/80 backdrop-blur-2xl border-r border-white/5 z-50 flex flex-col items-center md:items-start py-10 px-4 md:px-8 transition-all duration-500 group hover:w-64"
+    class="fixed left-0 top-0 h-screen w-20 md:w-64 bg-background/80 backdrop-blur-3xl border-r border-white/5 z-50 flex flex-col items-center md:items-start py-10 px-4 md:px-8 transition-all duration-500 group hover:w-64"
 >
     <!-- Logo/Brand -->
-    <div class="mb-16 flex items-center gap-4">
+    <div class="mb-10 flex items-center gap-4">
         <div
             class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-[0_0_20px_rgba(255,107,0,0.4)]"
         >
@@ -58,20 +86,20 @@
     </div>
 
     <!-- Navigation Links -->
-    <nav class="flex-1 w-full space-y-4">
+    <nav class="flex-1 w-full space-y-1 overflow-y-auto no-scrollbar py-4 pr-1">
         {#each navItems as item}
             <a
                 href={item.href}
                 class="flex items-center gap-4 p-3 rounded-xl transition-all group/nav relative {activeSection ===
                 item.id
-                    ? 'bg-primary text-black'
-                    : 'text-white/40'}"
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-white/40 hover:text-white/60 hover:bg-white/5'}"
                 on:click={() => setActive(item.id)}
             >
                 <svelte:component
                     this={item.icon}
-                    size={20}
-                    strokeWidth={activeSection === item.id ? 3 : 2}
+                    size={18}
+                    strokeWidth={activeSection === item.id ? 2.5 : 2}
                     class="transition-transform group-hover/nav:scale-110"
                 />
                 <span
@@ -82,7 +110,7 @@
 
                 {#if activeSection === item.id}
                     <div
-                        class="absolute -right-2 w-1 h-8 bg-primary rounded-full hidden md:block group-hover:block"
+                        class="absolute -right-2 w-1.5 h-6 bg-primary rounded-full hidden md:block group-hover:block blur-[1px]"
                     ></div>
                 {/if}
             </a>
@@ -90,14 +118,14 @@
     </nav>
 
     <!-- Bottom Controls -->
-    <div class="w-full pt-8 border-t border-white/5 space-y-6">
+    <div class="w-full pt-6 border-t border-white/5 space-y-4">
         <!-- Language Switcher -->
         <button
             on:click={() => lang.toggle()}
             class="w-full flex items-center gap-4 p-3 rounded-xl text-white/40 hover:text-primary transition-all group/lang"
         >
             <Languages
-                size={20}
+                size={18}
                 class="group-hover/lang:rotate-12 transition-transform"
             />
             <div
@@ -120,20 +148,29 @@
 
         <!-- Signature -->
         <div
-            class="hidden md:flex group-hover:flex items-center gap-4 px-3 opacity-30 select-none"
+            class="hidden md:flex group-hover:flex items-center gap-4 px-3 opacity-30 select-none pb-2"
         >
             <div class="w-1 h-1 rounded-full bg-white"></div>
             <span
                 class="font-label text-[8px] uppercase tracking-widest font-bold text-white whitespace-nowrap"
-                >v.2026.03</span
+                >v.2026.KINETIC</span
             >
         </div>
     </div>
 </aside>
 
 <style>
-    /* Ensure the sidebar doesn't hide on very small screens, 
-       but switches to icon-only mode until hovered */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
     @media (max-width: 768px) {
         aside:not(:hover) {
             width: 5rem;

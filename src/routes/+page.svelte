@@ -16,28 +16,28 @@
 </svelte:head>
 
 <main class="min-h-screen">
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="opening" data-aos="fade-up" data-aos-duration="600">
         <Opening />
     </section>
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="about" data-aos="fade-up" data-aos-duration="600">
         <AboutMe />
     </section>
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="education" data-aos="fade-up" data-aos-duration="600">
         <Education />
     </section>
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="skills" data-aos="fade-up" data-aos-duration="600">
         <Skills />
     </section>
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="projects" data-aos="fade-up" data-aos-duration="600">
         <Projects />
     </section>
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="achievements" data-aos="fade-up" data-aos-duration="600">
         <Achievements />
     </section>
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="challenges" data-aos="fade-up" data-aos-duration="600">
         <Challenges />
     </section>
-    <section data-aos="fade-up" data-aos-duration="600">
+    <section id="career" data-aos="fade-up" data-aos-duration="600">
         <CareerGoal />
     </section>
     <section id="contact" data-aos="fade-up" data-aos-duration="600">
